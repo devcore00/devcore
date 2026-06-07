@@ -265,3 +265,10 @@ function openProjectModal(index) {
   const modal = new bootstrap.Modal(document.getElementById('projectModal'));
   modal.show();
 }
+
+
+
+
+var spanYear=document.getElementById("year");
+var currentYear=new Date().getFullYear();
+spanYear.textContent=currentYear; 

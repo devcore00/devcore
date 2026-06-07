@@ -8,7 +8,6 @@
       "images": [
         "images/projects/project1-1.jpg",
         "images/projects/mobile/project1-2.jpg"
-  
       ],
       "tags": ["Flutter", "Dart", "Firebase", "UI/UX"],
       "link": ""
@@ -42,10 +41,7 @@
       "title": "هوية بصرية - مطعم",
       "category": "graphic",
       "description": "تصميم هوية بصرية متكاملة لمطعم تشمل الشعار والألوان وجميع المطبوعات.",
-      "images": [
-        "images/projects/project4-1.jpg"
-      
-      ],
+      "images": ["images/projects/project4-1.jpg"],
       "tags": ["Logo Design", "Brand Identity", "Print"],
       "link": ""
     },
@@ -66,9 +62,7 @@
       "title": "محتوى سوشيال ميديا - عيادة",
       "category": "social",
       "description": "تصميم محتوى سوشيال ميديا شهري لعيادة طبية يشمل البوستات والستوريز والإعلانات.",
-      "images": [
-        "images/projects/project6-1.jpg"
-      ],
+      "images": ["images/projects/project6-1.jpg"],
       "tags": ["Social Media", "Instagram", "Facebook", "Design"],
       "link": ""
     }
