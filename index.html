@@ -1,621 +1,334 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dev Core — قريباً</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dev Core - تطوير تطبيقات ومواقع</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css" />
-</head>
+    :root {
+      --purple-deep:  #1e0a3c;
+      --purple-mid:   #2d1060;
+      --purple-light: #4a1a9e;
+      --gold:         #f5a623;
+      --gold-light:   #ffc85a;
+      --white:        #ffffff;
+      --white-muted:  rgba(255,255,255,0.65);
+    }
 
-<body>
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar navbar-expand-lg" id="mainNav">
-        <div class="container">
+    html, body {
+      height: 100%;
+      font-family: 'Cairo', sans-serif;
+      background: var(--purple-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND ── */
+    .bg-wrap {
+      position: fixed; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 0%, #3b1280 0%, #1e0a3c 55%, #0d0420 100%);
+    }
+    .bg-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle 1px at 20% 30%, rgba(245,166,35,.35) 0%, transparent 100%),
+        radial-gradient(circle 1px at 80% 70%, rgba(245,166,35,.20) 0%, transparent 100%);
+      background-size: 160px 160px, 220px 220px;
+      opacity: .6;
+    }
+    /* floating orbs */
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); pointer-events: none;
+      animation: float linear infinite;
+    }
+    .orb1 { width:380px; height:380px; background: rgba(90,30,180,.45); top:-80px; left:-100px; animation-duration:18s; }
+    .orb2 { width:260px; height:260px; background: rgba(245,166,35,.18); bottom:60px; right:-60px; animation-duration:14s; animation-direction:reverse; }
+    .orb3 { width:180px; height:180px; background: rgba(120,50,220,.3); top:40%; left:55%; animation-duration:22s; }
+    @keyframes float {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(30px,-20px) scale(1.05); }
+      66%      { transform: translate(-20px,25px) scale(.97); }
+    }
+
+    /* ── GRID LINES ── */
+    .grid {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      position: relative; z-index: 2;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    /* ── LOGO ── */
+    .logo-wrap {
+      margin-bottom: 36px;
+      animation: fadeDown .8s ease both;
+    }
+    .logo-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 90px; height: 90px; border-radius: 22px;
+      background: linear-gradient(135deg, #3b1280 0%, #5c2bb5 100%);
+      box-shadow: 0 0 0 1px rgba(245,166,35,.25), 0 12px 40px rgba(0,0,0,.5);
+      margin-bottom: 14px;
+      position: relative; overflow: hidden;
+    }
+    .logo-icon::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(245,166,35,.12) 0%, transparent 60%);
+    }
+    .logo-icon .slash {
+      position: absolute;
+      width: 2px; height: 70%;
+      background: var(--gold);
+      transform: rotate(20deg);
+      opacity: .9;
+    }
+    .logo-icon .letter {
+      font-size: 32px; font-weight: 900; line-height: 1;
+      color: var(--white);
+      position: relative; z-index: 1;
+    }
+    .logo-icon .letter-d { margin-left: -10px; }
+    .logo-icon .letter-c { color: rgba(255,255,255,.7); }
+    .logo-text {
+      font-size: 30px; font-weight: 900; letter-spacing: 1px;
+    }
+    .logo-text .dev  { color: var(--white); }
+    .logo-text .core { color: var(--gold); }
+
+    /* ── BADGE ── */
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,166,35,.12);
+      border: 1px solid rgba(245,166,35,.3);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 13px; font-weight: 600; color: var(--gold-light);
+      margin-bottom: 24px;
+      animation: fadeDown .9s .1s ease both;
+    }
+    .badge-pill .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 6px var(--gold);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* ── HEADLINE ── */
+    h1 {
+    /*  font-size: clamp(38px, 7vw, 72px);*/
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      animation: fadeDown .9s .15s ease both;
+    }
+    h1 .highlight {
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: var(--white-muted);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 44px;
+      animation: fadeDown .9s .2s ease both;
+    }
+
+
+    /* ── SERVICES CHIPS ── */
+    .services-wrap {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center;
+      margin-bottom: 52px;
+      animation: fadeUp .9s .4s ease both;
+    }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 13px; font-weight: 600;
+      transition: background .3s, border-color .3s, transform .3s;
+    }
+    .chip:hover { background: rgba(245,166,35,.1); border-color: rgba(245,166,35,.3); transform: translateY(-2px); }
+    .chip i { color: var(--gold); font-size: 14px; }
+
+    /* ── SOCIAL ── */
+    .social-wrap {
+      display: flex; gap: 14px;
+      animation: fadeUp .9s .45s ease both;
+    }
+    .social-btn {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--white); text-decoration: none;
+      font-size: 18px;
+      transition: background .3s, border-color .3s, transform .3s, color .3s;
+    }
+    .social-btn:hover { transform: translateY(-3px); }
+    .social-btn.wa:hover  { background: rgba(37,211,102,.15); border-color: rgba(37,211,102,.4); color: #25d366; }
+    .social-btn.fb:hover  { background: rgba(66,103,178,.2); border-color: rgba(66,103,178,.5); color: #4267b2; }
+    .social-btn.em:hover  { background: rgba(245,166,35,.1); border-color: rgba(245,166,35,.3); color: var(--gold); }
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      position: fixed; bottom: 18px; left: 0; right: 0;
+      text-align: center;
+      font-size: 12px; color: rgba(255,255,255,.25);
+      z-index: 2;
+    }
+    .footer-note .dev  { color: rgba(255,255,255,.5); font-weight: 700; }
+    .footer-note .core { color: rgba(245,166,35,.6); font-weight: 700; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-wrap {
+      width: min(380px, 90%);
+      margin-bottom: 14px;
+      animation: fadeUp .9s .28s ease both;
+    }
+    .progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 12px; font-weight: 600;
+      color: var(--white-muted);
+      margin-bottom: 8px;
+    }
+    .progress-label span:last-child { color: var(--gold); }
+    .progress-bar-bg {
+      height: 6px; border-radius: 100px;
+      background: rgba(255,255,255,.1);
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, var(--purple-light), var(--gold));
+      width: 0%;
+      transition: width 1.8s cubic-bezier(.4,0,.2,1);
+    }
+        </style>
+    </head>
+    <body>
+        <!-- Background -->
+        <div class="bg-wrap">
+            <div class="orb orb1"></div>
+            <div class="orb orb2"></div>
+            <div class="orb orb3"></div>
+        </div>
+        <div class="grid"></div>
+        <!-- Page -->
+        <div class="page">
             <!-- Logo -->
-            <a class="navbar-brand" href="#home">
-                <span class="logo-dev">Dev</span>
-                <span class="logo-core">Core</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav me-auto pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">خدماتنا</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">مشاريعنا</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#why-us">لماذا نحن</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">تواصل معنا</a>
-                    </li>
-                </ul>
-                <a href="#contact" class="btn-nav-cta d-none d-lg-inline-block">ابدأ مشروعك</a>
-            </div>
-        </div>
-    </nav>
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="row align-items-center min-vh-hero">
-                <!-- ===== RIGHT: Text ===== -->
-                <div class="col-lg-7 hero-content">
-                    <div class="hero-eyebrow">
-                        <span class="eyebrow-dot"></span>
-                        متاح للعمل الآن
-                    </div>
-                    <h1 class="hero-title">
-                        نحول أفكارك إلى
-                        <br />
-                        <span class="title-highlight">تجارب رقمية</span>
-                        <br />
-                        احترافية
-                    </h1>
-                    <p class="hero-desc">
-                        فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية
-                        ومحتوى السوشيال ميديا.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#contact" class="btn-primary-gold">
-                            ابدأ مشروعك
-                            <i class="fa fa-arrow-left ms-2"></i>
-                        </a>
-                        <a href="#projects" class="btn-ghost"> شاهد أعمالنا </a>
-                    </div>
-                </div>
-                <!-- ===== LEFT: Illustration ===== -->
-                <div class="col-lg-5 d-none d-lg-flex justify-content-center align-items-center">
-                    <div class="hero-illustration">
-                        <!-- Card: Browser Window -->
-                        <div class="illus-card card-browser">
-                            <div class="browser-bar">
-                                <span class="b-dot red"></span>
-                                <span class="b-dot yellow"></span>
-                                <span class="b-dot green"></span>
-                                <span class="b-url">devcore.app</span>
-                            </div>
-                            <div class="browser-body">
-                                <div class="browser-shots">
-                                    <div class="browser-shot">
-                                        <img src="images/projects/project1-1.jpg" alt="مشروع ويب" loading="lazy" />
-                                    </div>
-                                    <div class="browser-shot">
-                                        <img src="images/projects/project2-1.jpg" alt="مشروع تطبيق" loading="lazy" />
-                                    </div>
-                                    <div class="browser-shot">
-                                        <img src="images/projects/project3-1.jpg" alt="مشروع تصميم" loading="lazy" />
-                                    </div>
-                                    <div class="browser-shot">
-                                        <img src="images/projects/project5-1.jpg" alt="مشروع سوشيال ميديا"
-                                            loading="lazy" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card: Mobile App -->
-                        <div class="illus-card card-mobile">
-                            <div class="mobile-notch"></div>
-                            <div class="mobile-body">
-                                <div class="mobile-shots">
-                                    <div class="mobile-shot">
-                                        <img src="images/projects/project4-1.jpg" alt="مشروع تطبيق موبايل"
-                                            loading="lazy" />
-                                    </div>
-                                    <div class="mobile-shot">
-                                        <img src="images/projects/project6-1.jpg" alt="واجهة مشروع موبايل"
-                                            loading="lazy" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mobile-nav">
-                                <span class="mn-dot active"></span>
-                                <span class="mn-dot"></span>
-                                <span class="mn-dot"></span>
-                            </div>
-                        </div>
-                        <!-- Card: Design -->
-                        <div class="illus-card card-design">
-                            <div class="design-palette">
-                                <span class="dp-circle c1"></span>
-                                <span class="dp-circle c2"></span>
-                                <span class="dp-circle c3"></span>
-                                <span class="dp-circle c4"></span>
-                            </div>
-                            <div class="design-canvas">
-                                <div class="design-shots">
-                                    <div class="design-shot">
-                                        <img src="images/projects/project2-2.jpg" alt="مشروع تصميم جرافيك"
-                                            loading="lazy" />
-                                    </div>
-                                    <div class="design-shot">
-                                        <img src="images/projects/project5-2.jpg" alt="تصميم سوشيال ميديا"
-                                            loading="lazy" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bb-line w-60" style="margin-top: 8px"></div>
-                        </div>
-                        <!-- Floating Chips -->
-                        <div class="chip chip-flutter">
-                            <i class="fa fa-mobile-screen"></i>
-                            Flutter
-                        </div>
-                        <div class="chip chip-laravel">
-                            <i class="fa fa-code"></i>
-                            Laravel
-                        </div>
-                        <div class="chip chip-design">
-                            <i class="fa fa-pen-nib"></i>
-                            Design
-                        </div>
-                        <!-- Center Logo -->
-                        <div class="illus-center">
-                            <span class="ic-dev">Dev</span>
-                            <span class="ic-core">Core</span>
-                        </div>
-                    </div>
+            <div class="logo-wrap">
+                <div class="logo-text">
+                    <span class="dev">Dev</span>
+                    <span class="core">Core</span>
                 </div>
             </div>
-        </div>
-        <!-- Subtle background shapes -->
-        <div class="hero-shape shape-1"></div>
-        <div class="hero-shape shape-2"></div>
-    </section>
-    <!-- ===== STATS ===== -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="row text-center g-0">
-                <div class="col-6 col-md-3 stat-divider">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fa fa-folder-open"></i></div>
-                        <span class="stat-number">+50</span>
-                        <span class="stat-label">مشروع منجز</span>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 stat-divider">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fa fa-users"></i></div>
-                        <span class="stat-number">+30</span>
-                        <span class="stat-label">عميل راضٍ</span>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 stat-divider">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fa fa-layer-group"></i></div>
-                        <span class="stat-number">4</span>
-                        <span class="stat-label">خدمات متخصصة</span>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fa fa-circle-check"></i></div>
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">التزام بالموعد</span>
-                    </div>
-                </div>
+            <!-- Badge -->
+            <div class="badge-pill">
+                <span class="dot"></span>
+                قيد التطوير الآن
             </div>
-        </div>
-    </section>
-    <!-- ===== SERVICES ===== -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <div class="section-title">
-                <span class="pre-title">ما الذي نقدمه</span>
-                <h2>
-                    خدماتنا
-                    <span>الاحترافية</span>
-                </h2>
-                <p>
-                    نقدم مجموعة متكاملة من الخدمات التقنية والإبداعية لمساعدتك في النمو
-                    الرقمي
-                </p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fa fa-mobile-screen"></i>
-                        </div>
-                        <h4>تطبيقات الموبايل</h4>
-                        <p>
-                            تطوير تطبيقات احترافية لـ Android و iOS باستخدام أحدث التقنيات.
-                        </p>
-                        <ul class="service-features">
-                            <li>
-                                <i class="fa fa-check"></i>
-                                Flutter & Dart
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                تصميم UI/UX متميز
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                أداء عالي وسرعة
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                Android & iOS
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fa fa-globe"></i>
-                        </div>
-                        <h4>تطبيقات الويب</h4>
-                        <p>تطوير مواقع ومنصات ويب متكاملة وقابلة للتوسع بكفاءة عالية.</p>
-                        <ul class="service-features">
-                            <li>
-                                <i class="fa fa-check"></i>
-                                Laravel & PHP
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                HTML, CSS, JS
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                لوحة تحكم متكاملة
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                Responsive Design
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fa fa-pen-nib"></i>
-                        </div>
-                        <h4>Graphic Design</h4>
-                        <p>
-                            تصميم هوية بصرية احترافية وتصاميم إبداعية تعكس علامتك التجارية.
-                        </p>
-                        <ul class="service-features">
-                            <li>
-                                <i class="fa fa-check"></i>
-                                شعارات احترافية
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                هوية بصرية متكاملة
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                مطبوعات ودعاية
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                تصاميم إبداعية
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fa fa-share-nodes"></i>
-                        </div>
-                        <h4>Social Media Design</h4>
-                        <p>تصميم محتوى سوشيال ميديا جذاب يزيد من تفاعلك وحضورك الرقمي.</p>
-                        <ul class="service-features">
-                            <li>
-                                <i class="fa fa-check"></i>
-                                بوستات وستوريز
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                تصاميم موشن
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                كفرات وبروفايل
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i>
-                                تصاميم إعلانية
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ===== PROJECTS ===== -->
-    <section class="projects-section" id="projects">
-        <div class="container">
-            <div class="section-title">
-                <span class="pre-title">أعمالنا</span>
-                <h2>
-                    مشاريعنا
-                    <span>المنجزة</span>
-                </h2>
-                <p>نماذج من أعمالنا في مختلف المجالات التقنية والإبداعية</p>
-            </div>
-            <!-- Filter Tabs -->
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="mobile">
+            <!-- Headline -->
+            <h1>
+                شيء
+                <span class="highlight">رائع</span>
+                قادم قريباً
+            </h1>
+            <p class="subtitle">
+                نعمل بجد على موقعنا الجديد لنقدم لك تجربة استثنائية.
+                <br>
+                ترقّب الإطلاق وكن أول من يعلم!
+            </p>
+            <!-- Services -->
+            <div class="services-wrap">
+                <div class="chip">
+                    <i class="fa fa-mobile-screen"></i>
                     تطبيقات موبايل
-                </button>
-                <button class="filter-btn" data-filter="web">تطبيقات ويب</button>
-                <button class="filter-btn" data-filter="graphic">
-                    جرافيك ديزاين
-                </button>
-                <button class="filter-btn" data-filter="social">سوشيال ميديا</button>
-            </div>
-            <!-- Projects Grid -->
-            <div class="row g-4" id="projectsGrid">
-                <!-- يتم تحميلها من JSON عبر JS -->
-                <div class="col-12 text-center py-5" id="projectsLoader">
-                    <div class="spinner-border text-purple" role="status"></div>
+                </div>
+                <div class="chip">
+                    <i class="fa fa-globe"></i>
+                    تطبيقات ويب
+                </div>
+                <div class="chip">
+                    <i class="fa fa-pen-nib"></i>
+                    Graphic Design
+                </div>
+                <div class="chip">
+                    <i class="fa fa-share-nodes"></i>
+                    Social Media
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- ===== PROJECT MODAL ===== -->
-    <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content project-modal-content">
-                <div class="modal-header project-modal-header">
-                    <h5 class="modal-title" id="modalTitle">اسم المشروع</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <!-- Carousel الصور -->
-                    <div id="projectCarousel" class="carousel slide">
-                        <div class="carousel-indicators" id="carouselIndicators"></div>
-                        <div class="carousel-inner" id="carouselInner"></div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                    </div>
-                    <!-- تفاصيل المشروع -->
-                    <div class="project-modal-details">
-                        <p id="modalDescription"></p>
-                        <div class="modal-tags" id="modalTags"></div>
-                        <div class="modal-actions">
-                            <a href="#" id="modalLink" target="_blank" class="btn-gold">
-                                <i class="fa fa-eye me-2"></i>
-                                عرض المشروع
-                            </a>
-                            <a href="#contact" class="btn-outline-purple" data-bs-dismiss="modal">
-                                <i class="fa fa-paper-plane me-2"></i>
-                                اطلب مشروع مشابه
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Social -->
+            <div class="social-wrap">
+                <a
+                    href="https://wa.me/201558200078"
+                    target="_blank"
+                    class="social-btn wa"
+                    title="واتساب"
+                >
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a
+                    href="https://www.facebook.com/DevCoreAgency"
+                    target="_blank"
+                    class="social-btn fb"
+                    title="فيسبوك"
+                >
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="mailto:devcore.tech.info@gmail.com" class="social-btn em" title="إيميل">
+                    <i class="fa fa-envelope"></i>
+                </a>
             </div>
         </div>
-    </div>
-    <!-- ===== WHY US ===== -->
-    <section class="why-section" id="why-us">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-5">
-                    <div class="section-title text-start mb-0">
-                        <span class="pre-title">سبب اختيارنا</span>
-                        <h2>
-                            لماذا
-                            <span class="logo-dev">Dev</span><span class="logo-core">Core</span>
-                            ؟
-                        </h2>
-                        <p style="margin: 15px 0 0; text-align: start">
-                            نحن لا نقدم مجرد كود أو تصميم، نحن نقدم شراكة حقيقية لنجاح
-                            مشروعك.
-                        </p>
-                        <div class="why-features">
-                            <div class="why-feature-item">
-                                <i class="fa fa-check"></i>
-                                خبرة متخصصة في مختلف المجالات
-                            </div>
-                            <div class="why-feature-item">
-                                <i class="fa fa-check"></i>
-                                تواصل مستمر طوال مراحل المشروع
-                            </div>
-                            <div class="why-feature-item">
-                                <i class="fa fa-check"></i>
-                                أسعار تنافسية وجودة لا تُضاهى
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="why-card">
-                                <div class="why-icon">
-                                    <i class="fa fa-trophy"></i>
-                                </div>
-                                <div>
-                                    <h5>جودة عالية</h5>
-                                    <p>
-                                        كل مشروع نسلمه يمر بمراحل مراجعة دقيقة لضمان أعلى مستوى من
-                                        الجودة.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="why-card">
-                                <div class="why-icon">
-                                    <i class="fa fa-clock"></i>
-                                </div>
-                                <div>
-                                    <h5>التزام بالمواعيد</h5>
-                                    <p>
-                                        نلتزم بالمواعيد المتفق عليها ونسلم مشاريعنا في الوقت
-                                        المحدد دائمًا.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="why-card">
-                                <div class="why-icon">
-                                    <i class="fa fa-headset"></i>
-                                </div>
-                                <div>
-                                    <h5>دعم متواصل</h5>
-                                    <p>
-                                        فريقنا متاح للدعم والمتابعة حتى بعد تسليم المشروع بشكل
-                                        كامل.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="why-card">
-                                <div class="why-icon">
-                                    <i class="fa fa-lightbulb"></i>
-                                </div>
-                                <div>
-                                    <h5>حلول مبتكرة</h5>
-                                    <p>
-                                        نفكر خارج الصندوق لنقدم حلولًا تقنية وإبداعية تناسب تحديات
-                                        عملك.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Footer -->
+        <div class="footer-note">
+            &copy; 2026
+            <span class="dev">Dev</span>
+            <span class="core">Core</span>
+            — جميع الحقوق محفوظة
         </div>
-    </section>
-    <!-- ===== CONTACT ===== -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <span class="pre-title">تواصل معنا</span>
-                <h2>
-                    ابدأ مشروعك
-                    <span style="color: var(--gold)">معنا الآن</span>
-                </h2>
-                <p>تواصل معنا عبر القنوات التالية وسيرد عليك فريقنا في أقرب وقت</p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-4 col-sm-6">
-                    <a href="https://wa.me/201558200078" target="_blank" class="contact-card">
-                        <div class="contact-icon whatsapp-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <h5>واتساب</h5>
-                        <p>تواصل معنا مباشرة عبر واتساب للرد السريع</p>
-                        <p class="contact-handle">+201558200078</p>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="https://www.facebook.com/DevCoreAgency" target="_blank" class="contact-card">
-                        <div class="contact-icon facebook-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <h5>فيسبوك</h5>
-                        <p>زيارة صفحتنا على فيسبوك وتواصل معنا عبر الرسائل</p>
-                        <p class="contact-handle">DevCore</p>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="mailto:devcore.tech.info@gmail.com" class="contact-card">
-                        <div class="contact-icon email-icon">
-                            <i class="fa fa-envelope"></i>
-                        </div>
-                        <h5>البريد الإلكتروني</h5>
-                        <p>راسلنا عبر الإيميل وسيرد فريقنا في أقرب وقت</p>
-                        <p class="contact-handle">devcore.tech.info@gmail.com</p>
-                    </a>
-                </div>
-            </div>
-            <div class="contact-info-bar">
-                <div class="row g-3 justify-content-center">
-                    <div class="col-auto">
-                        <div class="contact-info-item">
-                            <i class="fa fa-phone"></i>
-                            <span dir="ltr">+201558200078</span>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="contact-info-item">
-                            <i class="fa fa-envelope"></i>
-                            <span>devcore.tech.info@gmail.com</span>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="contact-info-item">
-                            <i class="fa fa-location-dot"></i>
-                            <span>مصر</span>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="contact-info-item">
-                            <i class="fa fa-clock"></i>
-                            <span>متاحون طوال أيام الأسبوع</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-4 text-center">
-                    <a href="#home" class="footer-logo-text">
-                        <span class="logo-dev">Dev</span>
-                        <span class="logo-core">Core</span>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center">
-                    <p class="footer-text mb-0">
-                        &copy; <span class="year" id="year">2025</span> Dev Core. جميع
-                        الحقوق محفوظة.
-                    </p>
-                </div>
-                <div class="col-md-4 text-md-center text-center mt-3 mt-md-0">
-                    <div class="footer-social">
-                        <a href="https://wa.me/201558200078" target="_blank" title="واتساب">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.facebook.com/DevCoreAgency" target="_blank" title="فيسبوك">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="mailto:devcore.tech.info@gmail.com" title="إيميل">
-                            <i class="fa fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop">
-        <i class="fa fa-arrow-up"></i>
-    </button>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
-
+        <script>
+    // ── PROGRESS BAR ──
+    const pct = 72;
+    setTimeout(() => {
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressPct').textContent  = pct + '%';
+    }, 600);
+        </script>
+    </body>
 </html>
