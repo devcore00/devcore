@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initScrollTop();
   initNavActiveLink();
   initSmoothScroll();
+  initFloatingNavbar();
   loadProjects();
 });
 
@@ -26,6 +27,22 @@ function initScrollTop() {
 
   btn.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* =============================================
+   FLOATING NAVBAR ON SCROLL
+============================================= */
+function initFloatingNavbar() {
+  var nav = document.getElementById('mainNav');
+  if (!nav) return;
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 80) {
+      nav.classList.add('nav-scrolled');
+    } else {
+      nav.classList.remove('nav-scrolled');
+    }
   });
 }
 
@@ -269,6 +286,68 @@ function openProjectModal(index) {
 
 
 
+/* =============================================
+   SERVICE MODAL
+============================================= */
+const servicesData = [
+  {
+    icon: 'fa fa-mobile-screen',
+    title: 'تطبيقات الموبايل',
+    desc: 'نطور تطبيقات موبايل احترافية تعمل على نظامي Android وiOS باستخدام Flutter وأحدث التقنيات. نحرص على أن يكون كل تطبيق سريعاً وسهل الاستخدام وذا تصميم احترافي يعكس هوية علامتك التجارية ويوفر تجربة مستخدم استثنائية.',
+    goals: ['Flutter & Dart', 'تصميم UI/UX متميز', 'Android & iOS بتطبيق واحد', 'أداء عالي وسرعة استجابة', 'تكامل مع APIs والخدمات الخارجية', 'نشر على Google Play & App Store']
+  },
+  {
+    icon: 'fa fa-globe',
+    title: 'تطبيقات الويب',
+    desc: 'نبني مواقع ومنصات ويب متكاملة قابلة للتوسع وذات أداء عالٍ باستخدام أحدث تقنيات التطوير. من التصميم إلى التنفيذ، نحرص على تقديم تجربة رقمية استثنائية لمستخدميك وتحقيق أهدافك التجارية.',
+    goals: ['Laravel & PHP', 'HTML5, CSS3, JavaScript', 'لوحة تحكم متكاملة', 'Responsive Design', 'تحسين محركات البحث (SEO)', 'تطوير تجارة إلكترونية']
+  },
+  {
+    icon: 'fa fa-pen-nib',
+    title: 'Graphic Design',
+    desc: 'نصمم هوية بصرية احترافية وتصاميم إبداعية تعكس علامتك التجارية وتجعلها لا تُنسى. من الشعار إلى المطبوعات، كل تصميم يُعبّر عن جوهر مشروعك ويترك انطباعاً دائماً.',
+    goals: ['تصميم شعارات احترافية', 'هوية بصرية متكاملة', 'مطبوعات ودعاية وإعلان', 'تصاميم بروشورات وكتالوجات', 'تصميم واجهات المستخدم UI', 'تصاميم إبداعية مخصصة']
+  },
+  {
+    icon: 'fa fa-share-nodes',
+    title: 'Social Media Design',
+    desc: 'نصمم محتوى سوشيال ميديا جذاباً ومؤثراً يزيد من تفاعلك وحضورك الرقمي على جميع منصات التواصل الاجتماعي. تصاميم تتحدث عن علامتك التجارية بصوت بصري قوي ومتناسق.',
+    goals: ['بوستات وستوريز احترافية', 'تصاميم موشن جرافيك', 'كفرات وبروفايل للصفحات', 'تصاميم إعلانات مدفوعة', 'محتوى بصري متناسق', 'خطة محتوى شهرية']
+  },
+  {
+    icon: 'fa fa-headset',
+    title: 'استشارة تقنية',
+    desc: 'نقدم استشارات تقنية متخصصة لمساعدتك في اختيار الحلول التكنولوجية المناسبة لمشروعك، وتحقيق أهدافك الرقمية بكفاءة وفاعلية من خلال خبرائنا المتخصصين.',
+    goals: ['تحليل متطلبات المشروع', 'اختيار التقنيات المناسبة', 'وضع خارطة طريق واضحة', 'تقييم التكاليف والجدول الزمني', 'استشارة أولى مجانية', 'متابعة ما بعد التنفيذ']
+  },
+  {
+    icon: 'fa fa-bullhorn',
+    title: 'التسويق الرقمي',
+    desc: 'نضع لك استراتيجيات تسويقية رقمية فعّالة تزيد من ظهورك الإلكتروني وتستهدف جمهورك المثالي لتحقيق نمو حقيقي وملموس لعملك ومبيعاتك.',
+    goals: ['استراتيجية تسويق متكاملة', 'إدارة إعلانات Google & Meta', 'تحسين محركات البحث SEO', 'تحليل البيانات والتقارير', 'إدارة منصات التواصل الاجتماعي', 'تسويق بالمحتوى']
+  }
+];
+
+function openServiceModal(index) {
+  var svc = servicesData[index];
+  if (!svc) return;
+
+  document.getElementById('svcIcon').className = svc.icon;
+  document.getElementById('svcTitle').textContent = svc.title;
+  document.getElementById('svcDesc').textContent = svc.desc;
+
+  var goalsList = document.getElementById('svcGoals');
+  goalsList.innerHTML = '';
+  svc.goals.forEach(function (goal) {
+    var li = document.createElement('li');
+    li.textContent = goal;
+    goalsList.appendChild(li);
+  });
+
+  var modal = new bootstrap.Modal(document.getElementById('serviceModal'));
+  modal.show();
+}
+
 var spanYear=document.getElementById("year");
 var currentYear=new Date().getFullYear();
-spanYear.textContent=currentYear; 
+spanYear.textContent=currentYear;
