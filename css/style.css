@@ -1122,22 +1122,26 @@ img {
 .sc-corner {
     position: absolute;
     top: 22px;
-    right: 22px;
-    width: 34px;
-    height: 34px;
+    left: 22px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    border: 1px dashed rgba(255, 255, 255, 0.22);
+    border: 1.5px dashed rgba(232, 150, 12, 0.45);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(232, 150, 12, 0.7);
     font-size: 12px;
-    transition: border-color 0.3s, color 0.3s;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: 0.5px;
+    transition: border-color 0.3s, color 0.3s, background 0.3s;
 }
 
 .service-cell:hover .sc-corner {
     border-color: var(--gold);
     color: var(--gold);
+    background: rgba(232, 150, 12, 0.08);
 }
 
 .sc-icon-ring {
