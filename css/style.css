@@ -2303,6 +2303,7 @@ img {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
+        padding: 0 20px 60px;
     }
 
     .service-cell {
@@ -2317,7 +2318,11 @@ img {
     }
 
     .hero-title {
-        font-size: clamp(1.8rem, 7vw, 2.4rem);
+        font-size: clamp(1.7rem, 7vw, 2.3rem);
+    }
+
+    .hero-desc {
+        font-size: 14px;
     }
 
     .hero-social {
@@ -2334,6 +2339,25 @@ img {
         gap: 10px;
     }
 
+    .btn-primary-gold,
+    .btn-ghost {
+        padding: 11px 22px;
+        font-size: 14px;
+    }
+
+    .section-title {
+        margin-bottom: 36px;
+    }
+
+    .section-title h2 {
+        text-align: center;
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .section-title .pre-title {
+        text-align: center;
+    }
+
     .stat-divider {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.15);
@@ -2343,9 +2367,17 @@ img {
         padding: 16px 8px;
     }
 
+    .stat-number {
+        font-size: 1.7rem;
+    }
+
+    .about-section {
+        padding: 60px 0;
+    }
+
     .about-image-wrap {
         padding-bottom: 44px;
-        padding-left: 20px;
+        padding-left: 16px;
     }
 
     .about-img-main img {
@@ -2353,19 +2385,80 @@ img {
     }
 
     .about-img-card {
-        padding: 14px 16px;
-        min-width: 130px;
+        padding: 12px 14px;
+        min-width: 120px;
+        gap: 10px;
     }
 
     .about-img-badge {
         top: 12px;
-        left: -6px;
+        left: 4px;
         font-size: 11px;
         padding: 5px 12px;
     }
 
     .about-year-num {
-        font-size: 2.8rem;
+        font-size: 2.4rem;
+    }
+
+    .services-grid {
+        padding: 0 14px 50px;
+    }
+
+    .service-cell {
+        padding: 38px 22px 34px;
+    }
+
+    .sc-icon-ring {
+        width: 76px;
+        height: 76px;
+        margin-bottom: 20px;
+    }
+
+    .sc-icon-ring i {
+        font-size: 28px;
+    }
+
+    .service-cell h4 {
+        font-size: 16px;
+    }
+
+    .projects-section {
+        padding: 60px 0;
+    }
+
+    .why-section {
+        padding: 60px 0;
+    }
+
+    .why-card {
+        padding: 18px;
+    }
+
+    .contact-section {
+        padding: 60px 0;
+    }
+
+    .contact-card {
+        padding: 24px 16px;
+    }
+
+    .contact-info-bar .row {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .contact-info-bar {
+        margin-top: 36px;
+    }
+
+    .service-modal-body {
+        padding: 16px 18px 28px;
+    }
+
+    .svc-modal-title {
+        font-size: 1.4rem;
     }
 
     #projectCarousel .carousel-item img {
@@ -2381,18 +2474,17 @@ img {
         justify-content: center;
     }
 
-    .contact-info-bar .row {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-
     .footer .row {
         gap: 14px 0;
     }
 
     .footer .col-md-4 {
         text-align: center !important;
+    }
+
+    .navbar.nav-scrolled .container {
+        border-radius: 12px;
+        padding: 6px 14px;
     }
 
     .floating-btns {
@@ -2410,48 +2502,45 @@ img {
         bottom: 20px;
         left: 14px;
     }
+}
+
+/* Small mobile — single column + filter scroll */
+@media (max-width: 576px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0 12px 40px;
+    }
+
+    .service-cell {
+        padding: 36px 20px 32px;
+    }
 
     .projects-filter {
-        gap: 6px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
+        justify-content: flex-start;
+        gap: 8px;
+        -webkit-overflow-scrolling: touch;
     }
 
     .filter-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
         padding: 6px 14px;
         font-size: 12px;
-    }
-
-    .service-cell {
-        padding: 38px 24px 34px;
-    }
-
-    .why-card {
-        padding: 18px;
-    }
-
-    .contact-card {
-        padding: 24px 16px;
-    }
-}
-
-/* Small mobile */
-@media (max-width: 480px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .service-cell {
-        padding: 36px 22px 32px;
     }
 
     .hero-actions {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
 
     .hero-actions a {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         justify-content: center;
     }
 
@@ -2462,11 +2551,75 @@ img {
 
     .about-actions a {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         justify-content: center;
     }
 
     .stat-number {
         font-size: 1.6rem;
+    }
+
+    .svc-goals-card {
+        padding: 20px 14px;
+    }
+
+    .project-modal-details {
+        padding: 18px 16px;
+    }
+
+    .about-img-badge {
+        left: 8px;
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+}
+
+/* Extra small */
+@media (max-width: 380px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-eyebrow {
+        font-size: 11px;
+        padding: 5px 12px;
+    }
+
+    .hero-social-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .stat-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .stat-icon i {
+        font-size: 18px;
+    }
+
+    .about-image-wrap {
+        padding-left: 8px;
+        padding-bottom: 36px;
+    }
+
+    .about-img-card {
+        min-width: 110px;
+        padding: 10px 12px;
+    }
+
+    .contact-card {
+        padding: 20px 12px;
+    }
+
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .contact-icon i {
+        font-size: 20px;
     }
 }
