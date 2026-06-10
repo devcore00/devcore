@@ -2407,6 +2407,20 @@ img {
 
     .service-cell {
         padding: 38px 22px 34px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .service-cell h4,
+    .service-cell p {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sc-read-more {
+        justify-content: center;
     }
 
     .sc-icon-ring {
@@ -2514,6 +2528,10 @@ img {
 
     .service-cell {
         padding: 36px 20px 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .projects-filter {
