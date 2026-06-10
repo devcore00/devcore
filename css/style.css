@@ -1152,7 +1152,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 28px;
+    margin: 0 auto 28px;
     transition: border-color 0.35s, transform 0.35s;
     position: relative;
 }
@@ -2412,7 +2412,7 @@ img {
     .sc-icon-ring {
         width: 76px;
         height: 76px;
-        margin-bottom: 20px;
+        margin: 0 auto 20px;
     }
 
     .sc-icon-ring i {
