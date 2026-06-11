@@ -4373,6 +4373,7 @@ html[data-theme] .filter-btn {
     transition: background 0.3s, border-color 0.3s, transform 0.3s;
     position: relative;
     color: var(--cs-white);
+
 }
 
 .coming-soon-page .chip:hover {
