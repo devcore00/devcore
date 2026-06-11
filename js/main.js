@@ -3,11 +3,18 @@
    ============================================= */
 
 // ===== DOM Ready =====
+// Apply saved theme immediately (before DOM ready to avoid flash)
+(function () {
+  var saved = localStorage.getItem('devcore-theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
   initScrollTop();
   initNavActiveLink();
   initSmoothScroll();
   initFloatingNavbar();
+  initThemeToggle();
   loadProjects();
 });
 
@@ -351,3 +358,18 @@ function openServiceModal(index) {
 var spanYear=document.getElementById("year");
 var currentYear=new Date().getFullYear();
 spanYear.textContent=currentYear;
+
+/* =============================================
+   THEME TOGGLE
+============================================= */
+function initThemeToggle() {
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+
+  btn.addEventListener('click', function () {
+    var current = document.documentElement.getAttribute('data-theme') || 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('devcore-theme', next);
+  });
+}
