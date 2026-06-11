@@ -2591,6 +2591,16 @@ img {
     pointer-events: none;
 }
 
+.pcf-img-preview {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(232,150,12,0.1);
+    position: relative;
+    z-index: 1;
+}
+
 .pcf-screen {
     background: #0b0220;
     border-radius: 18px;
@@ -2608,6 +2618,7 @@ img {
     direction: ltr;
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+
 
 .ps-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .ps-dot.red    { background: #ff5f57; }
@@ -2627,7 +2638,9 @@ img {
 }
 
 .pcf-screen-body {
-    padding: 18px;
+    padding: 16px 16px 14px;
+    flex: 1;
+    min-width: 0;
 }
 
 .pcf-screen-header {
@@ -2772,7 +2785,7 @@ img {
 /* Floating card */
 .pcf-float-card {
     position: absolute;
-    bottom: -18px;
+    bottom: 20px;
     left: 20px;
     background: var(--white);
     border-radius: 14px;
@@ -2780,7 +2793,8 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    z-index: 3;
 }
 
 .pcf-float-card i {
@@ -2818,7 +2832,7 @@ img {
     }
 
     .pcf-float-card {
-        bottom: -14px;
+        bottom: 14px;
         left: 14px;
     }
 }
