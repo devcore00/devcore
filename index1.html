@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dev Core - تطوير تطبيقات ومواقع</title>
+    <script>
+      (function () {
+        var t = localStorage.getItem("devcore-theme") || "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -129,15 +135,11 @@
           </div>
         </div>
       </div>
+      <canvas id="heroBg" class="hero-canvas"></canvas>
       <div class="hero-bg-blob blob-1"></div>
       <div class="hero-bg-blob blob-2"></div>
       <div class="hero-bg-blob blob-3"></div>
       <div class="hero-bg-blob blob-4"></div>
-      <div class="hero-particle hp1"></div>
-      <div class="hero-particle hp2"></div>
-      <div class="hero-particle hp3"></div>
-      <div class="hero-particle hp4"></div>
-      <div class="hero-particle hp5"></div>
     </section>
     <!-- ===== ABOUT ===== -->
     <section class="about-section" id="about">
@@ -145,7 +147,10 @@
         <div class="row align-items-center g-5">
           <!-- Text (RIGHT in RTL) -->
           <div class="col-lg-6">
-            <span class="pre-title">من نحن</span>
+            <div class="hero-eyebrow">
+              <span class="eyebrow-dot"></span>
+              من نحن
+            </div>
             <h2 class="about-title">
               <span class="logo-dev">Dev</span
               ><span class="logo-core">Core</span> <br />شريكك في النجاح الرقمي
@@ -200,7 +205,10 @@
     <section class="services-section" id="services">
       <div class="container">
         <div class="section-title">
-          <span class="pre-title">ما الذي نقدمه</span>
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            ما الذي نقدمه
+          </div>
           <h2>حيث الجودة تلتقي<br /><span>بالإبداع الرقمي</span></h2>
           <p>
             فريق متخصص يقدم حلولاً رقمية متكاملة لمساعدتك في النمو وتحقيق
@@ -285,7 +293,10 @@
     <section class="products-section" id="products">
       <div class="container">
         <div class="section-title">
-          <span class="pre-title">منتجاتنا</span>
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            منتجاتنا
+          </div>
           <h2>حلول جاهزة <span>للاستخدام الفوري</span></h2>
           <p>
             منتجات برمجية متكاملة طوّرناها لتلبية احتياجات قطاعات محددة بكفاءة
@@ -410,11 +421,16 @@
     <section class="projects-section" id="projects">
       <div class="container">
         <div class="section-title">
-          <span class="pre-title">أعمالنا</span>
-          <h2>
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            أعمالنا
+          </div>
+          <!-- <h2>
             مشاريعنا
             <span>المنجزة</span>
-          </h2>
+          </h2> -->
+
+          <h2 style="text-align: center">مشاريعنا <span>المنجزة </span></h2>
           <p>نماذج من أعمالنا في مختلف المجالات التقنية والإبداعية</p>
         </div>
         <!-- Filter Tabs -->
@@ -500,8 +516,11 @@
       <div class="container">
         <div class="row align-items-center g-5">
           <div class="col-lg-5">
+            <div class="hero-eyebrow">
+              <span class="eyebrow-dot"></span>
+              سبب اختيارنا
+            </div>
             <div class="section-title text-start mb-0">
-              <span class="pre-title">سبب اختيارنا</span>
               <h2>
                 لماذا
                 <span class="logo-dev">Dev</span
@@ -596,8 +615,9 @@
       <div class="container">
         <div class="cta-inner">
           <!-- Badge -->
-          <div class="cta-badge">
-            <span class="cta-badge-dot"></span>
+
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
             شريكك في التحول الرقمي
           </div>
           <!-- Headline -->
@@ -639,8 +659,11 @@
     <section class="contact-section" id="contact">
       <div class="container">
         <div class="section-title">
-          <span class="pre-title">تواصل معنا</span>
-          <h2>
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            تواصل معنا
+          </div>
+          <h2 style="text-align: center">
             ابدأ مشروعك
             <span class="text-gold">معنا الآن</span>
           </h2>

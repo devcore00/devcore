@@ -14,8 +14,8 @@
     --gray-600: #666;
     --text: #1c1c2e;
     --radius: 12px;
-    --shadow: 0 4px 24px rgba(74, 21, 133, 0.10);
-    --shadow-md: 0 8px 32px rgba(74, 21, 133, 0.14);
+    --shadow: 0 1px 8px rgba(74, 21, 133, 0.05);
+    --shadow-md: 0 4px 16px rgba(74, 21, 133, 0.08);
 
     /* Theme-aware section backgrounds */
     --bg-content: #ffffff;
@@ -61,7 +61,7 @@ img {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 1px 12px rgba(74, 21, 133, 0.06);
+    box-shadow: 0 1px 12px rgba(74, 21, 133, 0.03);
     transition: padding 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
@@ -77,7 +77,7 @@ img {
     background: var(--white);
     border-radius: 50px;
     padding: 8px 22px;
-    box-shadow: 0 8px 32px rgba(74, 21, 133, 0.14);
+    box-shadow: 0 8px 32px rgba(74, 21, 133, 0.08);
     border: 1px solid rgba(74, 21, 133, 0.08);
     transition: all 0.3s;
 }
@@ -343,6 +343,16 @@ img {
     }
 }
 
+/* --- Hero Canvas --- */
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* --- Eyebrow --- */
 .hero-eyebrow {
     display: inline-flex;
@@ -371,11 +381,11 @@ img {
 
     0%,
     100% {
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.22);
     }
 
     50% {
-        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.01);
     }
 }
 
@@ -437,7 +447,7 @@ img {
     text-decoration: none;
     transition: all 0.22s;
     background: var(--white);
-    box-shadow: 0 2px 10px rgba(74, 21, 133, 0.08);
+    box-shadow: 0 2px 10px rgba(74, 21, 133, 0.04);
 }
 
 .hero-social-btn:hover {
@@ -445,7 +455,7 @@ img {
     color: var(--white);
     border-color: var(--purple);
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(74, 21, 133, 0.25);
+    box-shadow: 0 6px 20px rgba(74, 21, 133, 0.14);
 }
 
 /* --- Actions --- */
@@ -474,7 +484,7 @@ img {
 
 .btn-primary-gold:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(232, 150, 12, 0.35);
+    box-shadow: 0 6px 20px rgba(232, 150, 12, 0.19);
     color: var(--white);
 }
 
@@ -690,7 +700,7 @@ img {
     overflow: hidden;
     z-index: 4;
     animation: float-mobile 5s ease-in-out infinite 1.5s;
-    box-shadow: 0 12px 36px rgba(74, 21, 133, 0.2);
+    box-shadow: 0 12px 36px rgba(74, 21, 133, 0.11);
 }
 
 .mobile-notch {
@@ -879,7 +889,7 @@ img {
     font-weight: 700;
     color: var(--text);
     font-family: 'Cairo', sans-serif;
-    box-shadow: 0 6px 20px rgba(74, 21, 133, 0.14);
+    box-shadow: 0 6px 20px rgba(74, 21, 133, 0.08);
     display: flex;
     align-items: center;
     gap: 7px;
@@ -935,7 +945,7 @@ img {
     border: 1.5px solid rgba(74, 21, 133, 0.15);
     border-radius: 50px;
     padding: 9px 22px;
-    box-shadow: 0 8px 28px rgba(74, 21, 133, 0.16);
+    box-shadow: 0 8px 28px rgba(74, 21, 133, 0.09);
     z-index: 5;
     animation: pulse-center 3s ease-in-out infinite;
 }
@@ -993,12 +1003,12 @@ img {
 
     0%,
     100% {
-        box-shadow: 0 8px 28px rgba(74, 21, 133, 0.16);
+        box-shadow: 0 8px 28px rgba(74, 21, 133, 0.09);
         transform: translate(50%, -50%) scale(1);
     }
 
     50% {
-        box-shadow: 0 12px 36px rgba(74, 21, 133, 0.28);
+        box-shadow: 0 12px 36px rgba(74, 21, 133, 0.15);
         transform: translate(50%, -50%) scale(1.05);
     }
 }
@@ -1151,7 +1161,7 @@ img {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    gap: 22px;
     background: transparent;
     margin: 24px;
     padding: 0 0 60px;
@@ -1160,8 +1170,8 @@ img {
 .service-cell {
     background: var(--white);
     border: 1px solid rgba(74, 21, 133, 0.1);
-    border-radius: 20px;
-    padding: 36px 28px 32px;
+    border-radius: 16px;
+    padding: 24px 22px 20px;
     position: relative;
     cursor: pointer;
     transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -1185,7 +1195,7 @@ img {
     background: var(--purple-pale);
     border-color: rgba(74, 21, 133, 0.22);
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(74, 21, 133, 0.12);
+    box-shadow: 0 12px 40px rgba(74, 21, 133, 0.07);
 }
 
 .service-cell:hover::after {
@@ -1194,10 +1204,10 @@ img {
 
 .sc-corner {
     position: absolute;
-    top: 22px;
-    right: 22px;
-    width: 38px;
-    height: 38px;
+    top: 16px;
+    right: 16px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     border: 1.5px dashed rgba(232, 150, 12, 0.45);
     display: flex;
@@ -1218,14 +1228,14 @@ img {
 }
 
 .sc-icon-ring {
-    width: 90px;
-    height: 90px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
     border: 1.5px dashed rgba(74, 21, 133, 0.22);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 28px;
+    margin: 0 auto 18px;
     transition: border-color 0.35s, transform 0.35s;
     position: relative;
 }
@@ -1248,7 +1258,7 @@ img {
 }
 
 .sc-icon-ring i {
-    font-size: 36px;
+    font-size: 26px;
     color: var(--gold);
     position: relative;
     z-index: 1;
@@ -1257,15 +1267,15 @@ img {
 .service-cell h4 {
     color: var(--text);
     font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 14px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .service-cell p {
     color: var(--gray-600);
-    font-size: 14px;
-    line-height: 1.9;
-    margin: 0 0 20px;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0 0 14px;
 }
 
 .sc-read-more {
@@ -1295,7 +1305,7 @@ img {
     border: none;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
 }
 
 .service-modal-header {
@@ -1605,7 +1615,7 @@ img {
     border: none;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 24px 64px rgba(74, 21, 133, 0.28);
+    box-shadow: 0 24px 64px rgba(74, 21, 133, 0.15);
 }
 
 .project-modal-header {
@@ -1742,7 +1752,7 @@ img {
 
 .btn-gold:hover {
     transform: translateY(-1px);
-    box-shadow: 0 5px 16px rgba(232, 150, 12, 0.3);
+    box-shadow: 0 5px 16px rgba(232, 150, 12, 0.17);
     color: var(--white);
 }
 
@@ -1999,7 +2009,7 @@ img {
     border-color: rgba(74, 21, 133, 0.22);
     transform: translateY(-5px);
     color: var(--text);
-    box-shadow: 0 12px 40px rgba(74, 21, 133, 0.12);
+    box-shadow: 0 12px 40px rgba(74, 21, 133, 0.07);
 }
 
 .contact-card:hover::before {
@@ -2014,13 +2024,13 @@ img {
     align-items: center;
     justify-content: center;
     margin: 0 auto 18px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.17);
     transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .contact-card:hover .contact-icon {
     transform: scale(1.1);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
 }
 
 .contact-icon i {
@@ -2228,13 +2238,13 @@ img {
     text-decoration: none;
     transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
     font-family: 'Cairo', sans-serif;
-    box-shadow: 0 8px 28px rgba(74, 21, 133, 0.3);
+    box-shadow: 0 8px 28px rgba(74, 21, 133, 0.17);
 }
 
 .cta-btn:hover {
     background: #3a1070;
     transform: translateY(-2px);
-    box-shadow: 0 14px 40px rgba(74, 21, 133, 0.4);
+    box-shadow: 0 14px 40px rgba(74, 21, 133, 0.22);
     color: var(--white);
 }
 
@@ -2611,7 +2621,7 @@ img {
     display: block;
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(232, 150, 12, 0.1);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(232, 150, 12, 0.06);
     position: relative;
     z-index: 1;
 }
@@ -2621,7 +2631,7 @@ img {
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.09);
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(232, 150, 12, 0.08);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(232, 150, 12, 0.04);
 }
 
 .pcf-screen-bar {
@@ -2842,7 +2852,7 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.17);
 }
 
 .pcf-float-card i {
@@ -2949,7 +2959,7 @@ img {
     transition: opacity 0.3s, visibility 0.3s, background 0.2s;
     z-index: 999;
     border: none;
-    box-shadow: 0 4px 14px rgba(74, 21, 133, 0.25);
+    box-shadow: 0 4px 14px rgba(74, 21, 133, 0.14);
 }
 
 .scroll-top.show {
@@ -3109,7 +3119,7 @@ img {
     display: flex;
     align-items: center;
     gap: 7px;
-    box-shadow: 0 4px 16px rgba(232, 150, 12, 0.35);
+    box-shadow: 0 4px 16px rgba(232, 150, 12, 0.19);
 }
 
 /* ============================================
@@ -3135,13 +3145,13 @@ img {
     color: var(--white);
     font-size: 22px;
     text-decoration: none;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
     transition: transform 0.22s, box-shadow 0.22s;
 }
 
 .float-btn:hover {
     transform: scale(1.12) translateY(-2px);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
     color: var(--white);
 }
 
@@ -3648,7 +3658,7 @@ html[data-theme] .filter-btn {
 [data-theme="dark"] .navbar.nav-scrolled .container {
     background: rgba(14, 3, 36, 0.96);
     border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 [data-theme="dark"] .navbar-nav .nav-link {
@@ -3804,7 +3814,7 @@ html[data-theme] .filter-btn {
 }
 
 [data-theme="dark"] .project-card:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     border-color: rgba(255, 255, 255, 0.16);
 }
 
@@ -3998,7 +4008,7 @@ html[data-theme] .filter-btn {
     background: rgba(255, 255, 255, 0.11);
     border-color: rgba(232, 150, 12, 0.35);
     color: var(--white);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(232, 150, 12, 0.1);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(232, 150, 12, 0.06);
 }
 
 [data-theme="dark"] .contact-card h5 {
@@ -4236,7 +4246,7 @@ html[data-theme] .filter-btn {
     height: 90px;
     border-radius: 22px;
     background: linear-gradient(135deg, #3b1280 0%, #5c2bb5 100%);
-    box-shadow: 0 0 0 1px rgba(245, 166, 35, 0.25), 0 12px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px rgba(245, 166, 35, 0.14), 0 12px 40px rgba(0, 0, 0, 0.28);
     margin-bottom: 14px;
     position: relative;
     overflow: hidden;
