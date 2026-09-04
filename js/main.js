@@ -10,7 +10,6 @@
 })();
 
 document.addEventListener('DOMContentLoaded', function () {
-  initHeroCanvas();
   initScrollTop();
   initNavActiveLink();
   initSmoothScroll();
@@ -158,7 +157,7 @@ function renderProjects(projects) {
     const badge = categoryBadge[project.category] || { class: '', label: '' };
     const firstImage = project.images && project.images.length > 0
       ? project.images[0]
-      : 'images/placeholder.jpg';
+      : 'public/placeholder.jpg';
     const imgCount = project.images ? project.images.length : 1;
 
     html += `
@@ -263,7 +262,7 @@ function openProjectModal(index) {
 
   const images = project.images && project.images.length > 0
     ? project.images
-    : ['images/placeholder.jpg'];
+    : ['public/placeholder.jpg'];
 
   images.forEach(function (imgSrc, i) {
     // Indicator
@@ -361,151 +360,18 @@ var currentYear=new Date().getFullYear();
 spanYear.textContent=currentYear;
 
 /* =============================================
-   HERO PARTICLE NETWORK CANVAS
-============================================= */
-function initHeroCanvas() {
-  var canvas = document.getElementById('heroBg');
-  if (!canvas) return;
-
-  var ctx = canvas.getContext('2d');
-  var particles = [];
-  var mouse = { x: -9999, y: -9999 };
-  var rafId;
-
-  var PARTICLE_COUNT = 75;
-  var CONNECT_DIST   = 140;
-  var MOUSE_DIST     = 180;
-
-  function isDark() {
-    return document.documentElement.getAttribute('data-theme') === 'dark';
-  }
-
-  function resize() {
-    var hero = canvas.closest('section') || canvas.parentElement;
-    canvas.width  = hero.offsetWidth;
-    canvas.height = hero.offsetHeight;
-  }
-
-  function makeParticle() {
-    var gold = Math.random() < 0.22;
-    return {
-      x:    Math.random() * canvas.width,
-      y:    Math.random() * canvas.height,
-      vx:   (Math.random() - 0.5) * 0.38,
-      vy:   (Math.random() - 0.5) * 0.38,
-      r:    Math.random() * 1.8 + 0.8,
-      gold: gold
-    };
-  }
-
-  function init() {
-    resize();
-    particles = [];
-    for (var i = 0; i < PARTICLE_COUNT; i++) particles.push(makeParticle());
-  }
-
-  function tick() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    var dark = isDark();
-    var purpleRGB = dark ? '130,80,210'  : '74,21,133';
-    var goldRGB   = '232,150,12';
-    var dotA      = dark ? 0.7  : 0.5;
-    var lineA     = dark ? 0.38 : 0.22;
-
-    // update
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-
-      // mouse repulsion
-      var mdx = p.x - mouse.x;
-      var mdy = p.y - mouse.y;
-      var md  = Math.hypot(mdx, mdy);
-      if (md < MOUSE_DIST && md > 0) {
-        var force = (MOUSE_DIST - md) / MOUSE_DIST * 0.012;
-        p.vx += (mdx / md) * force;
-        p.vy += (mdy / md) * force;
-      }
-
-      // damping so speed stays bounded
-      p.vx *= 0.998;
-      p.vy *= 0.998;
-
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0)              { p.x = 0;              p.vx *= -1; }
-      if (p.x > canvas.width)   { p.x = canvas.width;   p.vx *= -1; }
-      if (p.y < 0)              { p.y = 0;               p.vy *= -1; }
-      if (p.y > canvas.height)  { p.y = canvas.height;  p.vy *= -1; }
-    }
-
-    // connections
-    for (var i = 0; i < particles.length; i++) {
-      for (var j = i + 1; j < particles.length; j++) {
-        var dx   = particles[i].x - particles[j].x;
-        var dy   = particles[i].y - particles[j].y;
-        var dist = Math.hypot(dx, dy);
-        if (dist < CONNECT_DIST) {
-          var a     = (1 - dist / CONNECT_DIST) * lineA;
-          var color = (particles[i].gold || particles[j].gold) ? goldRGB : purpleRGB;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = 'rgba(' + color + ',' + a + ')';
-          ctx.lineWidth   = 0.75;
-          ctx.stroke();
-        }
-      }
-    }
-
-    // dots
-    for (var i = 0; i < particles.length; i++) {
-      var p     = particles[i];
-      var color = p.gold ? goldRGB : purpleRGB;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + color + ',' + dotA + ')';
-      ctx.fill();
-    }
-
-    rafId = requestAnimationFrame(tick);
-  }
-
-  // mouse tracking relative to canvas
-  var hero = canvas.closest('section') || canvas.parentElement;
-  hero.addEventListener('mousemove', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  hero.addEventListener('mouseleave', function () {
-    mouse.x = -9999; mouse.y = -9999;
-  });
-
-  window.addEventListener('resize', function () {
-    resize();
-    particles.forEach(function (p) {
-      if (p.x > canvas.width)  p.x = canvas.width;
-      if (p.y > canvas.height) p.y = canvas.height;
-    });
-  });
-
-  init();
-  tick();
-}
-
-/* =============================================
    THEME TOGGLE
 ============================================= */
 function initThemeToggle() {
-  var btn = document.getElementById('themeToggle');
-  if (!btn) return;
+  var btns = document.querySelectorAll('.theme-toggle');
+  if (!btns.length) return;
 
-  btn.addEventListener('click', function () {
-    var current = document.documentElement.getAttribute('data-theme') || 'light';
-    var next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('devcore-theme', next);
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('devcore-theme', next);
+    });
   });
 }

@@ -1,0 +1,23 @@
+{
+  "name": "Dev Core - تطوير تطبيقات ومواقع",
+  "short_name": "Dev Core",
+  "description": "فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية ومحتوى السوشيال ميديا.",
+  "start_url": "/index1.html",
+  "display": "standalone",
+  "background_color": "#0f0324",
+  "theme_color": "#4a1585",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "public/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "public/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
