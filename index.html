@@ -1,120 +1,801 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dev Core — قريباً</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body class="coming-soon-page">
-    <!-- Background -->
-    <div class="bg-wrap">
-      <div class="orb orb1"></div>
-      <div class="orb orb2"></div>
-      <div class="orb orb3"></div>
-    </div>
-    <div class="grid"></div>
-    <!-- Page -->
-    <div class="page">
-      <!-- Logo -->
-      <div class="logo-wrap">
-        <div class="logo-text">
-          <span class="dev">Dev</span>
-          <span class="core">Core</span>
-        </div>
-      </div>
-      <!-- Badge -->
-      <div class="badge-pill">
-        <span class="dot"></span>
-        قيد التطوير الآن
-      </div>
-      <!-- Headline -->
-      <h1>
-        شيء
-        <span class="highlight">رائع</span>
-        قادم قريباً
-      </h1>
-      <p class="subtitle">
-        نعمل بجد على موقعنا الجديد لنقدم لك تجربة استثنائية.
-        <br />
-        ترقّب الإطلاق وكن أول من يعلم!
-      </p>
-      <!-- Services -->
-      <div class="services-wrap">
-        <div class="chip">
-          <i class="fa fa-mobile-screen"></i>
-          تطبيقات موبايل
-        </div>
-        <div class="chip">
-          <i class="fa fa-globe"></i>
-          تطبيقات ويب
-        </div>
-        <div class="chip">
-          <i class="fa fa-pen-nib"></i>
-          Graphic Design
-        </div>
-        <div class="chip">
-          <i class="fa fa-share-nodes"></i>
-          Social Media
-        </div>
-      </div>
-      <!-- Social -->
-      <div class="social-wrap">
-        <a
-          href="https://wa.me/201558200078"
-          target="_blank"
-          class="social-btn wa"
-          title="واتساب"
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- ===== Primary SEO ===== -->
+        <title>Dev Core | تطوير تطبيقات الويب والموبايل وتصميم الهوية البصرية</title>
+        <meta name="description" content="Dev Core فريق متخصص في تطوير تطبيقات الويب والموبايل الاحترافية، وتصميم الهوية البصرية، وإدارة محتوى السوشيال ميديا. نحول أفكارك إلى تجارب رقمية احترافية بأعلى جودة والتزام تام.">
+        <meta name="keywords" content="Dev Core, تطوير مواقع, تطوير تطبيقات موبايل, تصميم هوية بصرية, برمجة تطبيقات, تصميم جرافيك, تسويق رقمي, سوشيال ميديا, شركة برمجة">
+        <meta name="author" content="Dev Core">
+        <meta name="robots" content="index, follow">
+        <meta name="language" content="Arabic">
+        <meta name="theme-color" content="#4a1585">
+        <!-- ===== Favicon ===== -->
+        <link rel="icon" href="public/icon.ico" sizes="any">
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="512x512"
+            href="public/icon-512.png"
         >
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a
-          href="https://www.facebook.com/DevCoreAgency"
-          target="_blank"
-          class="social-btn fb"
-          title="فيسبوك"
+        <link rel="apple-touch-icon" href="public/apple-touch-icon.png">
+        <link rel="manifest" href="site.webmanifest">
+        <!-- ===== Open Graph / Facebook ===== -->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Dev Core">
+        <meta property="og:locale" content="ar_AR">
+        <meta property="og:title" content="Dev Core | تطوير تطبيقات الويب والموبايل وتصميم الهوية البصرية">
+        <meta property="og:description" content="فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية ومحتوى السوشيال ميديا. نحول أفكارك إلى تجارب رقمية احترافية.">
+        <meta property="og:image" content="public/og-image.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <!-- ===== Twitter Card ===== -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Dev Core | تطوير تطبيقات الويب والموبايل وتصميم الهوية البصرية">
+        <meta name="twitter:description" content="فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية ومحتوى السوشيال ميديا.">
+        <meta name="twitter:image" content="public/og-image.jpg">
+        <script>
+      (function () {
+        var t = localStorage.getItem("devcore-theme") || "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+        </script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <!-- ===== Structured Data ===== -->
+        <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dev Core",
+        "description": "فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية ومحتوى السوشيال ميديا.",
+        "email": "devcore.tech.info@gmail.com",
+        "foundingDate": "2024",
+        "sameAs": [
+          "https://www.facebook.com/DevCoreAgency",
+          "https://www.instagram.com/devcore.software/",
+          "https://wa.me/201558200078"
+        ]
+      }
+        </script>
+    </head>
+    <body>
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar navbar-expand-lg" id="mainNav">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="#home">
+                    <img src="public/logo-nav.png" alt="DevCore" class="navbar-logo">
+                </a>
+                <div class="navbar-mobile-actions d-flex d-lg-none align-items-center">
+                    <button class="theme-toggle" id="themeToggleMobile" title="تبديل الوضع">
+                        <i class="fa fa-moon icon-dark"></i>
+                        <i class="fa fa-sun icon-light"></i>
+                    </button>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navMenu"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">من نحن</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#services">خدماتنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#products">منتجاتنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">اعمالنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#why-us">لماذا نحن</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">تواصل معنا</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-actions d-none d-lg-flex align-items-center">
+                        <button class="theme-toggle" id="themeToggle" title="تبديل الوضع">
+                            <i class="fa fa-moon icon-dark"></i>
+                            <i class="fa fa-sun icon-light"></i>
+                        </button>
+                        <a href="#contact" class="btn-nav-cta">ابدأ مشروعك</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-center-content">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        متاح للعمل الآن
+                    </div>
+                    <h1 class="hero-title">
+                        نحول أفكارك إلى
+                        <span class="title-highlight">تجارب رقمية</span>
+                        احترافية
+                    </h1>
+                    <p class="hero-desc">
+                        فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية
+            ومحتوى السوشيال ميديا.
+                    </p>
+                    <div class="hero-social">
+                        <a
+                            href="https://wa.me/201558200078"
+                            class="hero-social-btn"
+                            target="_blank"
+                            title="واتساب"
+                        >
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a
+                            href="https://www.facebook.com/DevCoreAgency"
+                            class="hero-social-btn"
+                            target="_blank"
+                            title="فيسبوك"
+                        >
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/devcore.software/"
+                            class="hero-social-btn"
+                            target="_blank"
+                            title="انستجرام"
+                        >
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:devcore.tech.info@gmail.com" class="hero-social-btn" title="إيميل">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn-primary-gold">
+                            ابدأ مشروعك
+                            <i class="fa fa-arrow-left ms-2"></i>
+                        </a>
+                        <a href="#projects" class="btn-ghost">شاهد أعمالنا</a>
+                        <a href="#about" class="btn-ghost">من نحن</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== ABOUT ===== -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <!-- Text (RIGHT in RTL) -->
+                    <div class="col-lg-6">
+                        <div class="hero-eyebrow">
+                            <span class="eyebrow-dot"></span>
+                            من نحن
+                        </div>
+                        <h2 class="about-title">
+                            <span class="logo-dev">Dev
+                            </span
+              >
+                            <span class="logo-core">Core</span>
+                            <br>
+                            شريكك في النجاح الرقمي
+                        </h2>
+                        <p class="about-desc">
+                            نحن فريق من المطورين والمصممين الشغوفين بتحويل الأفكار إلى تجارب
+              رقمية احترافية. نقدم خدمات متكاملة تشمل تطوير تطبيقات الويب
+              والموبايل، وتصميم الهوية البصرية، ومحتوى السوشيال ميديا — كل ذلك
+              بجودة عالية والتزام تام.
+                        </p>
+                        <div class="about-actions">
+                            <a href="#contact" class="btn-primary-gold">
+                                ابدأ مشروعك
+                                <i class="fa fa-arrow-left ms-2"></i>
+                            </a>
+                            <a href="#services" class="btn-ghost">خدماتنا</a>
+                        </div>
+                        <div class="about-year-badge">
+                            <span class="about-year-num">2024</span>
+                            <span class="about-year-label">التأسيس</span>
+                        </div>
+                    </div>
+                    <!-- Image (LEFT in RTL) -->
+                    <div class="col-lg-6">
+                        <div class="about-image-wrap">
+                            <div class="about-img-main">
+                                <img src="public/projects/project1-1.jpg" alt="Dev Core فريق العمل" loading="lazy">
+                            </div>
+                            <div class="about-img-card">
+                                <div class="about-img-card-icon">
+                                    <i class="fa fa-trophy"></i>
+                                </div>
+                                <div>
+                                    <div class="about-img-card-num">+50</div>
+                                    <div class="about-img-card-label">مشروع منجز</div>
+                                </div>
+                            </div>
+                            <div class="about-img-badge">
+                                <i class="fa fa-star"></i>
+                                جودة مضمونة
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== SERVICES ===== -->
+        <section class="services-section" id="services">
+            <div class="container">
+                <div class="section-title">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        ما الذي نقدمه
+                    </div>
+                    <h2>حيث الجودة تلتقي
+                        <br>
+                        <span>بالإبداع الرقمي</span>
+                    </h2>
+                    <p>
+                        فريق متخصص يقدم حلولاً رقمية متكاملة لمساعدتك في النمو وتحقيق
+            أهدافك.
+                    </p>
+                </div>
+                <div class="services-grid">
+                    <!-- Row 1: 3 service cards -->
+                    <div class="service-cell" onclick="openServiceModal(0)">
+                        <div class="sc-corner">01</div>
+                        <div class="sc-icon-ring">
+                            <i class="fa fa-mobile-screen"></i>
+                        </div>
+                        <h4>تطبيقات الموبايل</h4>
+                        <p>
+                            تطوير تطبيقات احترافية لـ Android و iOS باستخدام Flutter وأحدث
+            التقنيات.
+                        </p>
+                        <span class="sc-read-more">عرض المزيد
+                            <i class="fa fa-arrow-left">
+                            </i
+          >
+                        </span>
+                    </div>
+                    <div class="service-cell" onclick="openServiceModal(1)">
+                        <div class="sc-corner">02</div>
+                        <div class="sc-icon-ring">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <h4>تطبيقات الويب</h4>
+                        <p>
+                            تطوير مواقع ومنصات ويب متكاملة وقابلة للتوسع بكفاءة وجودة عالية.
+                        </p>
+                        <span class="sc-read-more">عرض المزيد
+                            <i class="fa fa-arrow-left">
+                            </i
+          >
+                        </span>
+                    </div>
+                    <div class="service-cell" onclick="openServiceModal(2)">
+                        <div class="sc-corner">03</div>
+                        <div class="sc-icon-ring">
+                            <i class="fa fa-pen-nib"></i>
+                        </div>
+                        <h4>Graphic Design</h4>
+                        <p>
+                            تصميم هوية بصرية احترافية وتصاميم إبداعية تعكس علامتك التجارية بأفضل
+            صورة.
+                        </p>
+                        <span class="sc-read-more">عرض المزيد
+                            <i class="fa fa-arrow-left">
+                            </i
+          >
+                        </span>
+                    </div>
+                    <!-- Row 2: Social | Featured white (center) | CTA dark -->
+                    <div class="service-cell" onclick="openServiceModal(3)">
+                        <div class="sc-corner">04</div>
+                        <div class="sc-icon-ring">
+                            <i class="fa fa-share-nodes"></i>
+                        </div>
+                        <h4>Social Media Design</h4>
+                        <p>تصميم محتوى سوشيال ميديا جذاب يزيد من تفاعلك وحضورك الرقمي.</p>
+                        <span class="sc-read-more">عرض المزيد
+                            <i class="fa fa-arrow-left">
+                            </i
+          >
+                        </span>
+                    </div>
+                    <div class="service-cell" onclick="openServiceModal(4)">
+                        <div class="sc-corner">05</div>
+                        <div class="sc-icon-ring">
+                            <i class="fa fa-headset"></i>
+                        </div>
+                        <h4>استشارة تقنية</h4>
+                        <p>
+                            نساعدك في اختيار الحلول التكنولوجية المناسبة لمشروعك وتحقيق أهدافك
+            الرقمية.
+                        </p>
+                        <span class="sc-read-more">عرض المزيد
+                            <i class="fa fa-arrow-left">
+                            </i
+          >
+                        </span>
+                    </div>
+                    <div class="service-cell" onclick="openServiceModal(5)">
+                        <div class="sc-corner">06</div>
+                        <div class="sc-icon-ring">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <h4>التسويق الرقمي</h4>
+                        <p>
+                            استراتيجيات تسويقية فعّالة لزيادة ظهورك الرقمي وتحقيق نمو حقيقي
+            لعملك.
+                        </p>
+                        <span class="sc-read-more">عرض المزيد
+                            <i class="fa fa-arrow-left">
+                            </i
+          >
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== PRODUCTS ===== -->
+        <section class="products-section" id="products">
+            <div class="container">
+                <div class="section-title">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        منتجاتنا
+                    </div>
+                    <h2>حلول جاهزة
+                        <span>للاستخدام الفوري</span>
+                    </h2>
+                    <p>
+                        منتجات برمجية متكاملة طوّرناها لتلبية احتياجات قطاعات محددة بكفاءة
+            وجودة عالية
+                    </p>
+                </div>
+                <div class="products-grid" id="productsGrid">
+                    <div class="text-center py-5" id="productsLoader">
+                        <div class="spinner-border text-purple" role="status"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== PRODUCT DETAILS MODAL ===== -->
+        <div
+            class="modal fade"
+            id="productDetailsModal"
+            tabindex="-1"
+            aria-hidden="true"
         >
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a
-          href="https://www.instagram.com/devcore.software/"
-          target="_blank"
-          class="social-btn ig"
-          title="انستجرام"
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content service-modal-content">
+                    <div class="service-modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body service-modal-body">
+                        <div class="row g-4 align-items-start">
+                            <div class="col-lg-7">
+                                <div class="svc-modal-icon-wrap">
+                                    <i id="prodIcon" class="fa fa-hospital-user"></i>
+                                </div>
+                                <h3 class="svc-modal-title" id="prodTitle"></h3>
+                                <p class="prod-modal-tagline" id="prodTagline"></p>
+                                <p class="svc-modal-desc" id="prodDesc"></p>
+                                <img id="prodImage" src="" alt="" class="prod-modal-img" />
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="svc-goals-card">
+                                    <h5 class="svc-goals-title">مميزات المنتج</h5>
+                                    <hr class="svc-goals-hr">
+                                    <ul class="svc-goals-list prod-goals-list" id="prodFeatures"></ul>
+                                    <a href="#contact" class="btn-primary-gold svc-modal-cta" data-bs-dismiss="modal">
+                                        اطلب عرضاً تجريبياً
+                                        <i class="fa fa-arrow-left ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===== SERVICE MODAL ===== -->
+        <div
+            class="modal fade"
+            id="serviceModal"
+            tabindex="-1"
+            aria-hidden="true"
         >
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a
-          href="mailto:devcore.tech.info@gmail.com"
-          class="social-btn em"
-          title="إيميل"
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content service-modal-content">
+                    <div class="service-modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body service-modal-body">
+                        <div class="row g-4 align-items-start">
+                            <div class="col-lg-7">
+                                <div class="svc-modal-icon-wrap">
+                                    <i id="svcIcon" class="fa fa-mobile-screen"></i>
+                                </div>
+                                <h3 class="svc-modal-title" id="svcTitle"></h3>
+                                <p class="svc-modal-desc" id="svcDesc"></p>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="svc-goals-card">
+                                    <h5 class="svc-goals-title">أهداف الخدمة</h5>
+                                    <hr class="svc-goals-hr">
+                                    <ul class="svc-goals-list" id="svcGoals"></ul>
+                                    <a href="#contact" class="btn-primary-gold svc-modal-cta" data-bs-dismiss="modal">
+                                        اطلب الخدمة الآن
+                                        <i class="fa fa-arrow-left ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===== PROJECTS ===== -->
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <div class="section-title">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        أعمالنا
+                    </div>
+                    <!-- <h2>
+            مشاريعنا
+            <span>المنجزة</span>
+          </h2> -->
+                    <h2 style="text-align: center">مشاريعنا
+                        <span>المنجزة</span>
+                    </h2>
+                    <p>نماذج من أعمالنا في مختلف المجالات التقنية والإبداعية</p>
+                </div>
+                <!-- Filter Tabs -->
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">الكل</button>
+                    <button class="filter-btn" data-filter="mobile">
+                        تطبيقات موبايل
+                    </button>
+                    <button class="filter-btn" data-filter="web">تطبيقات ويب</button>
+                    <button class="filter-btn" data-filter="graphic">
+                        جرافيك ديزاين
+                    </button>
+                    <button class="filter-btn" data-filter="social">سوشيال ميديا</button>
+                </div>
+                <!-- Projects Grid -->
+                <div class="row g-4" id="projectsGrid">
+                    <!-- يتم تحميلها من JSON عبر JS -->
+                    <div class="col-12 text-center py-5" id="projectsLoader">
+                        <div class="spinner-border text-purple" role="status"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== PROJECT MODAL ===== -->
+        <div
+            class="modal fade"
+            id="projectModal"
+            tabindex="-1"
+            aria-hidden="true"
         >
-          <i class="fa fa-envelope"></i>
-        </a>
-      </div>
-    </div>
-    <!-- Footer -->
-    <div class="footer-note">
-      &copy; 2026
-      <span class="dev">Dev</span>
-      <span class="core">Core</span>
-      — جميع الحقوق محفوظة
-    </div>
-    <script>
-      // ── PROGRESS BAR ──
-      const pct = 72;
-      setTimeout(() => {
-        document.getElementById("progressFill").style.width = pct + "%";
-        document.getElementById("progressPct").textContent = pct + "%";
-      }, 600);
-    </script>
-  </body>
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content project-modal-content">
+                    <div class="modal-header project-modal-header">
+                        <h5 class="modal-title" id="modalTitle">اسم المشروع</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <!-- Carousel الصور -->
+                        <div id="projectCarousel" class="carousel slide">
+                            <div class="carousel-indicators" id="carouselIndicators"></div>
+                            <div class="carousel-inner" id="carouselInner"></div>
+                            <button
+                                class="carousel-control-prev"
+                                type="button"
+                                data-bs-target="#projectCarousel"
+                                data-bs-slide="prev"
+                            >
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button
+                                class="carousel-control-next"
+                                type="button"
+                                data-bs-target="#projectCarousel"
+                                data-bs-slide="next"
+                            >
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                        </div>
+                        <!-- تفاصيل المشروع -->
+                        <div class="project-modal-details">
+                            <p id="modalDescription"></p>
+                            <div class="modal-tags" id="modalTags"></div>
+                            <div class="modal-actions">
+                                <a
+                                    href="#"
+                                    id="modalLink"
+                                    target="_blank"
+                                    class="btn-gold"
+                                >
+                                    <i class="fa fa-eye me-2"></i>
+                                    عرض المشروع
+                                </a>
+                                <a href="#contact" class="btn-outline-purple" data-bs-dismiss="modal">
+                                    <i class="fa fa-paper-plane me-2"></i>
+                                    اطلب مشروع مشابه
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===== WHY US ===== -->
+        <section class="why-section" id="why-us">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-5">
+                        <div class="hero-eyebrow">
+                            <span class="eyebrow-dot"></span>
+                            سبب اختيارنا
+                        </div>
+                        <div class="section-title text-start mb-0">
+                            <h2>
+                                لماذا
+                                <span class="logo-dev">Dev
+                                </span
+                >
+                                <span class="logo-core">Core</span>
+                                ؟
+                            </h2>
+                            <p class="why-intro-text">
+                                نحن لا نقدم مجرد كود أو تصميم، نحن نقدم شراكة حقيقية لنجاح
+                مشروعك.
+                            </p>
+                            <div class="why-features">
+                                <div class="why-feature-item">
+                                    <i class="fa fa-check"></i>
+                                    خبرة متخصصة في مختلف المجالات
+                                </div>
+                                <div class="why-feature-item">
+                                    <i class="fa fa-check"></i>
+                                    تواصل مستمر طوال مراحل المشروع
+                                </div>
+                                <div class="why-feature-item">
+                                    <i class="fa fa-check"></i>
+                                    أسعار تنافسية وجودة لا تُضاهى
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="why-card">
+                                    <div class="why-icon">
+                                        <i class="fa fa-trophy"></i>
+                                    </div>
+                                    <div>
+                                        <h5>جودة عالية</h5>
+                                        <p>
+                                            كل مشروع نسلمه يمر بمراحل مراجعة دقيقة لضمان أعلى مستوى من
+                      الجودة.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="why-card">
+                                    <div class="why-icon">
+                                        <i class="fa fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h5>التزام بالمواعيد</h5>
+                                        <p>
+                                            نلتزم بالمواعيد المتفق عليها ونسلم مشاريعنا في الوقت
+                      المحدد دائمًا.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="why-card">
+                                    <div class="why-icon">
+                                        <i class="fa fa-headset"></i>
+                                    </div>
+                                    <div>
+                                        <h5>دعم متواصل</h5>
+                                        <p>
+                                            فريقنا متاح للدعم والمتابعة حتى بعد تسليم المشروع بشكل
+                      كامل.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="why-card">
+                                    <div class="why-icon">
+                                        <i class="fa fa-lightbulb"></i>
+                                    </div>
+                                    <div>
+                                        <h5>حلول مبتكرة</h5>
+                                        <p>
+                                            نفكر خارج الصندوق لنقدم حلولًا تقنية وإبداعية تناسب تحديات
+                      عملك.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== CTA SECTION ===== -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-inner">
+                    <!-- Badge -->
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        شريكك في التحول الرقمي
+                    </div>
+                    <!-- Headline -->
+                    <h2 class="cta-headline">
+                        جاهز لتحويل فكرتك إلى
+                        <span>واقع رقمي؟</span>
+                    </h2>
+                    <!-- Subtitle -->
+                    <p class="cta-sub">
+                        انضم لعملائنا المميزين،
+                        <span>فريقنا يعمل معك</span>
+                        من أول فكرة حتى
+            الإطلاق الكامل
+                    </p>
+                    <!-- Stats -->
+                    <div class="cta-stats">
+                        <div class="cta-stat">
+                            <span class="cta-stat-num">50+</span>
+                            <span class="cta-stat-lbl">عميل سعيد</span>
+                        </div>
+                        <div class="cta-stat-divider"></div>
+                        <div class="cta-stat">
+                            <span class="cta-stat-num">100+</span>
+                            <span class="cta-stat-lbl">مشروع منجز</span>
+                        </div>
+                        <div class="cta-stat-divider"></div>
+                        <div class="cta-stat">
+                            <span class="cta-stat-num">6</span>
+                            <span class="cta-stat-lbl">خدمات متكاملة</span>
+                        </div>
+                    </div>
+                    <!-- CTA Button -->
+                    <a href="#contact" class="cta-btn">
+                        ابدأ مشروعك الآن
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- ===== CONTACT ===== -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        تواصل معنا
+                    </div>
+                    <h2 style="text-align: center">
+                        ابدأ مشروعك
+                        <span class="text-gold">معنا الآن</span>
+                    </h2>
+                    <p>تواصل معنا عبر القنوات التالية وسيرد عليك فريقنا في أقرب وقت</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4 col-sm-6">
+                        <a href="https://wa.me/201558200078" target="_blank" class="contact-card">
+                            <div class="contact-icon whatsapp-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h5>واتساب</h5>
+                            <p>تواصل معنا مباشرة عبر واتساب للرد السريع</p>
+                            <p class="contact-handle">+201558200078</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="https://www.facebook.com/DevCoreAgency" target="_blank" class="contact-card">
+                            <div class="contact-icon facebook-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <h5>فيسبوك</h5>
+                            <p>زيارة صفحتنا على فيسبوك وتواصل معنا عبر الرسائل</p>
+                            <p class="contact-handle">DevCore</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="mailto:devcore.tech.info@gmail.com" class="contact-card">
+                            <div class="contact-icon email-icon">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <h5>البريد الإلكتروني</h5>
+                            <p>راسلنا عبر الإيميل وسيرد فريقنا في أقرب وقت</p>
+                            <p class="contact-handle">devcore.tech.info@gmail.com</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-center">
+                        <a href="#home" class="footer-logo-text">
+                            <img src="public/logo-nav-dark.png" alt="DevCore" class="footer-logo-img">
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <p class="footer-text mb-0">
+                            &copy;
+                            <span class="year" id="year">2025</span>
+                            Dev Core. جميع
+              الحقوق محفوظة.
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-md-center text-center mt-3 mt-md-0">
+                        <div class="footer-social">
+                            <a href="https://wa.me/201558200078" target="_blank" title="واتساب">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.facebook.com/DevCoreAgency" target="_blank" title="فيسبوك">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/devcore.software/" target="_blank" title="انستجرام">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="mailto:devcore.tech.info@gmail.com" title="إيميل">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top -->
+        <button class="scroll-top" id="scrollTop">
+            <i class="fa fa-arrow-up"></i>
+        </button>
+        <!-- Floating Contact Buttons -->
+        <div class="floating-btns">
+            <a
+                href="https://wa.me/201558200078"
+                class="float-btn float-whatsapp"
+                target="_blank"
+                title="واتساب"
+            >
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="tel:+201558200078" class="float-btn float-phone" title="اتصل بنا">
+                <i class="fa fa-phone"></i>
+            </a>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
 </html>

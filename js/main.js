@@ -2,6 +2,12 @@
    Dev Core - Main JavaScript
    ============================================= */
 
+// Prevent the browser from restoring a scrolled position on refresh
+// (it would land the fixed navbar over the middle of a section)
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 // ===== DOM Ready =====
 // Apply saved theme immediately (before DOM ready to avoid flash)
 (function () {
@@ -15,8 +21,105 @@ document.addEventListener('DOMContentLoaded', function () {
   initSmoothScroll();
   initFloatingNavbar();
   initThemeToggle();
+  initHeroTypewriter();
+  loadProducts();
   loadProjects();
 });
+
+/* =============================================
+   HERO TITLE + DESCRIPTION TYPEWRITER
+============================================= */
+function typeElement(el, speed, callback) {
+  var originalNodes = Array.prototype.slice.call(el.childNodes);
+
+  // Normalize whitespace so source-file indentation isn't typed out literally
+  originalNodes.forEach(function (node, i) {
+    if (node.nodeType !== Node.TEXT_NODE) return;
+    var normalized = node.textContent.replace(/\s+/g, ' ');
+    if (i === 0) normalized = normalized.replace(/^\s+/, '');
+    if (i === originalNodes.length - 1) normalized = normalized.replace(/\s+$/, '');
+    node.textContent = normalized;
+  });
+
+  el.textContent = '';
+  el.style.opacity = '1';
+
+  var nodeIndex = 0;
+  var charIndex = 0;
+  var currentTarget = el;
+
+  function typeNext() {
+    if (nodeIndex >= originalNodes.length) {
+      if (callback) callback();
+      return;
+    }
+
+    var node = originalNodes[nodeIndex];
+
+    if (node.nodeType === Node.TEXT_NODE) {
+      var text = node.textContent;
+      if (text.length === 0) {
+        nodeIndex++;
+        setTimeout(typeNext, 0);
+        return;
+      }
+      if (charIndex < text.length) {
+        currentTarget.appendChild(document.createTextNode(text.charAt(charIndex)));
+        charIndex++;
+        setTimeout(typeNext, speed);
+      } else {
+        nodeIndex++;
+        charIndex = 0;
+        currentTarget = el;
+        setTimeout(typeNext, speed);
+      }
+      return;
+    }
+
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      if (node.tagName === 'BR') {
+        el.appendChild(document.createElement('br'));
+        nodeIndex++;
+        setTimeout(typeNext, speed);
+        return;
+      }
+
+      if (currentTarget === el) {
+        var clone = node.cloneNode(false);
+        el.appendChild(clone);
+        currentTarget = clone;
+      }
+
+      var elText = node.textContent;
+      if (charIndex < elText.length) {
+        currentTarget.appendChild(document.createTextNode(elText.charAt(charIndex)));
+        charIndex++;
+        setTimeout(typeNext, speed);
+      } else {
+        nodeIndex++;
+        charIndex = 0;
+        currentTarget = el;
+        setTimeout(typeNext, speed);
+      }
+    }
+  }
+
+  typeNext();
+}
+
+function initHeroTypewriter() {
+  var titleEl = document.querySelector('.hero-title');
+  var descEl = document.querySelector('.hero-desc');
+  if (!titleEl) return;
+
+  typeElement(titleEl, 55, function () {
+    if (descEl) {
+      setTimeout(function () {
+        typeElement(descEl, 18);
+      }, 200);
+    }
+  });
+}
 
 /* =============================================
    SCROLL TO TOP
@@ -352,6 +455,103 @@ function openServiceModal(index) {
   });
 
   var modal = new bootstrap.Modal(document.getElementById('serviceModal'));
+  modal.show();
+}
+
+/* =============================================
+   PRODUCTS - Load from JSON
+============================================= */
+let productsData = [];
+
+function loadProducts() {
+  fetch('data/products.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('فشل تحميل المنتجات');
+      return res.json();
+    })
+    .then(function (data) {
+      productsData = data.products || [];
+      renderProducts(productsData);
+    })
+    .catch(function (err) {
+      console.error(err);
+      var grid = document.getElementById('productsGrid');
+      if (grid) {
+        grid.innerHTML = '<div class="no-projects"><i class="fa fa-folder-open"></i><p>تعذّر تحميل المنتجات، يرجى المحاولة لاحقًا.</p></div>';
+      }
+    });
+}
+
+function renderProducts(products) {
+  var grid = document.getElementById('productsGrid');
+  if (!grid) return;
+
+  var html = products.map(function (p, index) {
+    var featuresHtml = p.features.map(function (f) {
+      return '<div class="pcf-feature"><i class="' + f.icon + '"></i>' + f.text + '</div>';
+    }).join('');
+
+    return (
+      '<div class="product-card-featured">' +
+        '<div class="pcf-inner">' +
+          '<div class="pcf-content">' +
+            '<div class="pcf-top">' +
+              '<div class="pcf-icon-wrap"><i class="' + p.icon + '"></i></div>' +
+              '<div class="pcf-badge-wrap">' +
+                '<span class="pcf-badge">' + p.badge + '</span>' +
+                '<span class="pcf-badge pcf-badge-live"><span class="pcf-live-dot"></span>متاح الآن</span>' +
+              '</div>' +
+            '</div>' +
+            '<h3 class="pcf-name">' + p.nameAr + ' <span>' + p.nameEn + '</span></h3>' +
+            '<p class="pcf-tagline">' + p.tagline + '</p>' +
+            '<p class="pcf-desc">' + p.desc + '</p>' +
+            '<div class="pcf-features">' + featuresHtml + '</div>' +
+            '<div class="pcf-actions">' +
+              '<a href="#contact" class="btn-primary-gold">اطلب عرضاً تجريبياً<i class="fa fa-arrow-left ms-2"></i></a>' +
+              '<a href="#contact" class="pcf-btn-ghost">تواصل معنا</a>' +
+              '<button type="button" class="pcf-btn-details" onclick="openProductModal(' + index + ')"><i class="fa fa-circle-info"></i>عرض التفاصيل</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pcf-visual">' +
+            '<img src="' + p.image + '" alt="' + p.imageAlt + '" class="pcf-img-preview" />' +
+            '<div class="pcf-float-card">' +
+              '<i class="fa fa-star"></i>' +
+              '<div><strong>' + p.floatTitle + '</strong><span>' + p.floatSub + '</span></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  }).join('');
+
+  grid.innerHTML = html;
+}
+
+function openProductModal(index) {
+  var prod = productsData[index];
+  if (!prod) return;
+
+  document.getElementById('prodIcon').className = prod.icon;
+  document.getElementById('prodTitle').textContent = prod.nameAr + ' — ' + prod.nameEn;
+  document.getElementById('prodTagline').textContent = prod.tagline;
+  document.getElementById('prodDesc').textContent = prod.desc;
+
+  var img = document.getElementById('prodImage');
+  img.src = prod.image;
+  img.alt = prod.nameAr;
+
+  var featuresList = document.getElementById('prodFeatures');
+  featuresList.innerHTML = '';
+  prod.features.forEach(function (feature) {
+    var li = document.createElement('li');
+    var icon = document.createElement('i');
+    icon.className = feature.icon;
+    li.appendChild(icon);
+    li.appendChild(document.createTextNode(feature.text));
+    featuresList.appendChild(li);
+  });
+
+  var modal = new bootstrap.Modal(document.getElementById('productDetailsModal'));
   modal.show();
 }
 
