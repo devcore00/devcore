@@ -11,6 +11,7 @@
         <meta name="robots" content="index, follow">
         <meta name="language" content="Arabic">
         <meta name="theme-color" content="#4a1585">
+        <link rel="canonical" href="https://devcore.software/">
         <!-- ===== Favicon ===== -->
         <link rel="icon" href="public/icon.ico" sizes="any">
         <link
@@ -25,16 +26,19 @@
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Dev Core">
         <meta property="og:locale" content="ar_AR">
+        <meta property="og:url" content="https://devcore.software/">
         <meta property="og:title" content="Dev Core | تطوير تطبيقات الويب والموبايل وتصميم الهوية البصرية">
         <meta property="og:description" content="فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية ومحتوى السوشيال ميديا. نحول أفكارك إلى تجارب رقمية احترافية.">
-        <meta property="og:image" content="public/og-image.jpg">
+        <meta property="og:image" content="https://devcore.software/public/og-image.jpg">
+        <meta property="og:image:secure_url" content="https://devcore.software/public/og-image.jpg">
+        <meta property="og:image:type" content="image/jpeg">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
         <!-- ===== Twitter Card ===== -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Dev Core | تطوير تطبيقات الويب والموبايل وتصميم الهوية البصرية">
         <meta name="twitter:description" content="فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية ومحتوى السوشيال ميديا.">
-        <meta name="twitter:image" content="public/og-image.jpg">
+        <meta name="twitter:image" content="https://devcore.software/public/og-image.jpg">
         <script>
       (function () {
         var t = localStorage.getItem("devcore-theme") || "light";
@@ -71,7 +75,12 @@
                     <img src="public/logo-nav.png" alt="DevCore" class="navbar-logo">
                 </a>
                 <div class="navbar-mobile-actions d-flex d-lg-none align-items-center">
-                    <button class="theme-toggle" id="themeToggleMobile" title="تبديل الوضع">
+                    <button
+                        class="theme-toggle"
+                        id="themeToggleMobile"
+                        type="button"
+                        title="تبديل الوضع"
+                    >
                         <i class="fa fa-moon icon-dark"></i>
                         <i class="fa fa-sun icon-light"></i>
                     </button>
@@ -80,6 +89,8 @@
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#navMenu"
+                        title="فتح القائمة"
+                        aria-label="فتح القائمة"
                     >
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -109,7 +120,12 @@
                         </li>
                     </ul>
                     <div class="navbar-actions d-none d-lg-flex align-items-center">
-                        <button class="theme-toggle" id="themeToggle" title="تبديل الوضع">
+                        <button
+                            class="theme-toggle"
+                            id="themeToggle"
+                            type="button"
+                            title="تبديل الوضع"
+                        >
                             <i class="fa fa-moon icon-dark"></i>
                             <i class="fa fa-sun icon-light"></i>
                         </button>
@@ -140,6 +156,7 @@
                             href="https://wa.me/201558200078"
                             class="hero-social-btn"
                             target="_blank"
+                            rel="noopener"
                             title="واتساب"
                         >
                             <i class="fab fa-whatsapp"></i>
@@ -148,6 +165,7 @@
                             href="https://www.facebook.com/DevCoreAgency"
                             class="hero-social-btn"
                             target="_blank"
+                            rel="noopener"
                             title="فيسبوك"
                         >
                             <i class="fab fa-facebook-f"></i>
@@ -156,6 +174,7 @@
                             href="https://www.instagram.com/devcore.software/"
                             class="hero-social-btn"
                             target="_blank"
+                            rel="noopener"
                             title="انستجرام"
                         >
                             <i class="fab fa-instagram"></i>
@@ -186,7 +205,8 @@
                             من نحن
                         </div>
                         <h2 class="about-title">
-                            <span class="logo-dev">Dev
+                            <span class="logo-dev">
+                                Dev
                             </span
               >
                             <span class="logo-core">Core</span>
@@ -207,7 +227,7 @@
                             <a href="#services" class="btn-ghost">خدماتنا</a>
                         </div>
                         <div class="about-year-badge">
-                            <span class="about-year-num">2024</span>
+                            <span class="about-year-num">2023</span>
                             <span class="about-year-label">التأسيس</span>
                         </div>
                     </div>
@@ -215,14 +235,14 @@
                     <div class="col-lg-6">
                         <div class="about-image-wrap">
                             <div class="about-img-main">
-                                <img src="public/projects/project1-1.jpg" alt="Dev Core فريق العمل" loading="lazy">
+                                <img src="public/projects/default_image.png" alt="Dev Core فريق العمل" loading="lazy">
                             </div>
                             <div class="about-img-card">
                                 <div class="about-img-card-icon">
                                     <i class="fa fa-trophy"></i>
                                 </div>
                                 <div>
-                                    <div class="about-img-card-num">+50</div>
+                                    <div class="about-img-card-num">+25</div>
                                     <div class="about-img-card-label">مشروع منجز</div>
                                 </div>
                             </div>
@@ -243,7 +263,8 @@
                         <span class="eyebrow-dot"></span>
                         ما الذي نقدمه
                     </div>
-                    <h2>حيث الجودة تلتقي
+                    <h2>
+                        حيث الجودة تلتقي
                         <br>
                         <span>بالإبداع الرقمي</span>
                     </h2>
@@ -264,7 +285,8 @@
                             تطوير تطبيقات احترافية لـ Android و iOS باستخدام Flutter وأحدث
             التقنيات.
                         </p>
-                        <span class="sc-read-more">عرض المزيد
+                        <span class="sc-read-more">
+                            عرض المزيد
                             <i class="fa fa-arrow-left">
                             </i
           >
@@ -279,7 +301,8 @@
                         <p>
                             تطوير مواقع ومنصات ويب متكاملة وقابلة للتوسع بكفاءة وجودة عالية.
                         </p>
-                        <span class="sc-read-more">عرض المزيد
+                        <span class="sc-read-more">
+                            عرض المزيد
                             <i class="fa fa-arrow-left">
                             </i
           >
@@ -295,7 +318,8 @@
                             تصميم هوية بصرية احترافية وتصاميم إبداعية تعكس علامتك التجارية بأفضل
             صورة.
                         </p>
-                        <span class="sc-read-more">عرض المزيد
+                        <span class="sc-read-more">
+                            عرض المزيد
                             <i class="fa fa-arrow-left">
                             </i
           >
@@ -309,7 +333,8 @@
                         </div>
                         <h4>Social Media Design</h4>
                         <p>تصميم محتوى سوشيال ميديا جذاب يزيد من تفاعلك وحضورك الرقمي.</p>
-                        <span class="sc-read-more">عرض المزيد
+                        <span class="sc-read-more">
+                            عرض المزيد
                             <i class="fa fa-arrow-left">
                             </i
           >
@@ -325,7 +350,8 @@
                             نساعدك في اختيار الحلول التكنولوجية المناسبة لمشروعك وتحقيق أهدافك
             الرقمية.
                         </p>
-                        <span class="sc-read-more">عرض المزيد
+                        <span class="sc-read-more">
+                            عرض المزيد
                             <i class="fa fa-arrow-left">
                             </i
           >
@@ -341,7 +367,8 @@
                             استراتيجيات تسويقية فعّالة لزيادة ظهورك الرقمي وتحقيق نمو حقيقي
             لعملك.
                         </p>
-                        <span class="sc-read-more">عرض المزيد
+                        <span class="sc-read-more">
+                            عرض المزيد
                             <i class="fa fa-arrow-left">
                             </i
           >
@@ -358,7 +385,8 @@
                         <span class="eyebrow-dot"></span>
                         منتجاتنا
                     </div>
-                    <h2>حلول جاهزة
+                    <h2>
+                        حلول جاهزة
                         <span>للاستخدام الفوري</span>
                     </h2>
                     <p>
@@ -394,7 +422,12 @@
                                 <h3 class="svc-modal-title" id="prodTitle"></h3>
                                 <p class="prod-modal-tagline" id="prodTagline"></p>
                                 <p class="svc-modal-desc" id="prodDesc"></p>
-                                <img id="prodImage" src="" alt="" class="prod-modal-img" />
+                                <img
+                                    id="prodImage"
+                                    src=""
+                                    alt=""
+                                    class="prod-modal-img"
+                                >
                             </div>
                             <div class="col-lg-5">
                                 <div class="svc-goals-card">
@@ -461,22 +494,23 @@
             مشاريعنا
             <span>المنجزة</span>
           </h2> -->
-                    <h2 style="text-align: center">مشاريعنا
+                    <h2 class="text-center">
+                        مشاريعنا
                         <span>المنجزة</span>
                     </h2>
                     <p>نماذج من أعمالنا في مختلف المجالات التقنية والإبداعية</p>
                 </div>
                 <!-- Filter Tabs -->
                 <div class="projects-filter">
-                    <button class="filter-btn active" data-filter="all">الكل</button>
-                    <button class="filter-btn" data-filter="mobile">
+                    <button class="filter-btn active" type="button" data-filter="all">الكل</button>
+                    <button class="filter-btn" type="button" data-filter="mobile">
                         تطبيقات موبايل
                     </button>
-                    <button class="filter-btn" data-filter="web">تطبيقات ويب</button>
-                    <button class="filter-btn" data-filter="graphic">
+                    <button class="filter-btn" type="button" data-filter="web">تطبيقات ويب</button>
+                    <button class="filter-btn" type="button" data-filter="graphic">
                         جرافيك ديزاين
                     </button>
-                    <button class="filter-btn" data-filter="social">سوشيال ميديا</button>
+                    <button class="filter-btn" type="button" data-filter="social">سوشيال ميديا</button>
                 </div>
                 <!-- Projects Grid -->
                 <div class="row g-4" id="projectsGrid">
@@ -531,6 +565,7 @@
                                     href="#"
                                     id="modalLink"
                                     target="_blank"
+                                    rel="noopener"
                                     class="btn-gold"
                                 >
                                     <i class="fa fa-eye me-2"></i>
@@ -558,7 +593,8 @@
                         <div class="section-title text-start mb-0">
                             <h2>
                                 لماذا
-                                <span class="logo-dev">Dev
+                                <span class="logo-dev">
+                                    Dev
                                 </span
                 >
                                 <span class="logo-core">Core</span>
@@ -671,12 +707,12 @@
                     <!-- Stats -->
                     <div class="cta-stats">
                         <div class="cta-stat">
-                            <span class="cta-stat-num">50+</span>
+                            <span class="cta-stat-num">20+</span>
                             <span class="cta-stat-lbl">عميل سعيد</span>
                         </div>
                         <div class="cta-stat-divider"></div>
                         <div class="cta-stat">
-                            <span class="cta-stat-num">100+</span>
+                            <span class="cta-stat-num">25+</span>
                             <span class="cta-stat-lbl">مشروع منجز</span>
                         </div>
                         <div class="cta-stat-divider"></div>
@@ -701,7 +737,7 @@
                         <span class="eyebrow-dot"></span>
                         تواصل معنا
                     </div>
-                    <h2 style="text-align: center">
+                    <h2 class="text-center">
                         ابدأ مشروعك
                         <span class="text-gold">معنا الآن</span>
                     </h2>
@@ -709,7 +745,12 @@
                 </div>
                 <div class="row g-4 justify-content-center">
                     <div class="col-md-4 col-sm-6">
-                        <a href="https://wa.me/201558200078" target="_blank" class="contact-card">
+                        <a
+                            href="https://wa.me/201558200078"
+                            target="_blank"
+                            rel="noopener"
+                            class="contact-card"
+                        >
                             <div class="contact-icon whatsapp-icon">
                                 <i class="fab fa-whatsapp"></i>
                             </div>
@@ -719,7 +760,12 @@
                         </a>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <a href="https://www.facebook.com/DevCoreAgency" target="_blank" class="contact-card">
+                        <a
+                            href="https://www.facebook.com/DevCoreAgency"
+                            target="_blank"
+                            rel="noopener"
+                            class="contact-card"
+                        >
                             <div class="contact-icon facebook-icon">
                                 <i class="fab fa-facebook-f"></i>
                             </div>
@@ -760,13 +806,28 @@
                     </div>
                     <div class="col-md-4 text-md-center text-center mt-3 mt-md-0">
                         <div class="footer-social">
-                            <a href="https://wa.me/201558200078" target="_blank" title="واتساب">
+                            <a
+                                href="https://wa.me/201558200078"
+                                target="_blank"
+                                rel="noopener"
+                                title="واتساب"
+                            >
                                 <i class="fab fa-whatsapp"></i>
                             </a>
-                            <a href="https://www.facebook.com/DevCoreAgency" target="_blank" title="فيسبوك">
+                            <a
+                                href="https://www.facebook.com/DevCoreAgency"
+                                target="_blank"
+                                rel="noopener"
+                                title="فيسبوك"
+                            >
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="https://www.instagram.com/devcore.software/" target="_blank" title="انستجرام">
+                            <a
+                                href="https://www.instagram.com/devcore.software/"
+                                target="_blank"
+                                rel="noopener"
+                                title="انستجرام"
+                            >
                                 <i class="fab fa-instagram"></i>
                             </a>
                             <a href="mailto:devcore.tech.info@gmail.com" title="إيميل">
@@ -778,7 +839,13 @@
             </div>
         </footer>
         <!-- Scroll to Top -->
-        <button class="scroll-top" id="scrollTop">
+        <button
+            class="scroll-top"
+            id="scrollTop"
+            type="button"
+            title="الرجوع لأعلى الصفحة"
+            aria-label="الرجوع لأعلى الصفحة"
+        >
             <i class="fa fa-arrow-up"></i>
         </button>
         <!-- Floating Contact Buttons -->
@@ -787,6 +854,7 @@
                 href="https://wa.me/201558200078"
                 class="float-btn float-whatsapp"
                 target="_blank"
+                rel="noopener"
                 title="واتساب"
             >
                 <i class="fab fa-whatsapp"></i>

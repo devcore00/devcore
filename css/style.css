@@ -1663,6 +1663,7 @@ section[id] {
     background-color: rgba(74, 21, 133, 0.75);
     border-radius: 50%;
     background-size: 40%;
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
 }
 
@@ -3160,7 +3161,7 @@ section[id] {
 @media (max-width: 991px) {
     .hero {
         padding: 60px 0 70px;
-        min-height: auto;
+        min-height: 0;
     }
 
     .hero-center-content {
@@ -3465,7 +3466,6 @@ section[id] {
         padding-bottom: 6px;
         justify-content: flex-start;
         gap: 8px;
-        -webkit-overflow-scrolling: touch;
     }
 
     .filter-btn {
