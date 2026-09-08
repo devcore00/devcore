@@ -163,21 +163,46 @@ function initNavActiveLink() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
-  window.addEventListener('scroll', function () {
-    let current = '';
+  // While a nav click is smooth-scrolling, don't let the scroll handler
+  // fight the clicked link for the "active" state.
+  let lockUntil = 0;
 
+  function setActive(id) {
+    navLinks.forEach(function (link) {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function updateActive() {
+    if (Date.now() < lockUntil) return;
+
+    let current = '';
     sections.forEach(function (section) {
-      const sectionTop = section.offsetTop - 90;
-      if (window.scrollY >= sectionTop) {
+      if (window.scrollY >= section.offsetTop - 110) {
         current = section.getAttribute('id');
       }
     });
 
-    navLinks.forEach(function (link) {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
+    // Near the bottom of the page the last sections can't reach the top,
+    // so force the last section active once we're at the end.
+    const scrollBottom = window.scrollY + window.innerHeight;
+    if (scrollBottom >= document.documentElement.scrollHeight - 2 && sections.length) {
+      current = sections[sections.length - 1].getAttribute('id');
+    }
+
+    if (current) setActive(current);
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  // Mark the clicked link immediately instead of waiting for the scroll to land.
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      const href = link.getAttribute('href') || '';
+      if (href.charAt(0) !== '#' || href === '#') return;
+      setActive(href.slice(1));
+      lockUntil = Date.now() + 900;
     });
   });
 }
