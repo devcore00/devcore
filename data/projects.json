@@ -6,8 +6,8 @@
       "category": "mobile",
       "description": "تطبيق موبايل متكامل لمتجر إلكتروني يدعم Android وiOS مع نظام دفع إلكتروني وتتبع الطلبات.",
       "images": [
-        "public/projects/default_image.png",
-        "public/projects/mobile/default_image.png"
+        "public/default_image.png",
+        "public/mobile/default_image.png"
       ],
       "tags": [
         "Flutter",
@@ -23,8 +23,8 @@
       "category": "mobile",
       "description": "تطبيق احترافي لحجز المواعيد مع نظام إشعارات وإدارة متكاملة للعملاء.",
       "images": [
-        "public/projects/default_image.png",
-        "public/projects/default_image.png"
+        "public/default_image.png",
+        "public/default_image.png"
       ],
       "tags": [
         "Flutter",
@@ -39,8 +39,8 @@
       "category": "web",
       "description": "منصة ويب تعليمية متكاملة تتيح إنشاء الكورسات وإدارة الطلاب ومتابعة التقدم.",
       "images": [
-        "public/projects/default_image.png",
-        "public/projects/default_image.png"
+        "public/default_image.png",
+        "public/default_image.png"
       ],
       "tags": [
         "Laravel",
@@ -56,7 +56,7 @@
       "category": "graphic",
       "description": "تصميم هوية بصرية متكاملة لمطعم تشمل الشعار والألوان وجميع المطبوعات.",
       "images": [
-        "public/projects/default_image.png"
+        "public/default_image.png"
       ],
       "tags": [
         "Logo Design",
@@ -71,8 +71,8 @@
       "category": "graphic",
       "description": "تصميم شعار عصري وهوية بصرية احترافية لشركة تقنية ناشئة.",
       "images": [
-        "public/projects/default_image.png",
-        "public/projects/default_image.png"
+        "public/default_image.png",
+        "public/default_image.png"
       ],
       "tags": [
         "Logo",
@@ -87,7 +87,7 @@
       "category": "social",
       "description": "تصميم محتوى سوشيال ميديا شهري لعيادة طبية يشمل البوستات والستوريز والإعلانات.",
       "images": [
-        "public/projects/default_image.png"
+        "public/default_image.png"
       ],
       "tags": [
         "Social Media",
