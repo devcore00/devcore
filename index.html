@@ -273,106 +273,57 @@
             أهدافك.
                     </p>
                 </div>
-                <div class="services-grid">
-                    <!-- Row 1: 3 service cards -->
-                    <div class="service-cell" onclick="openServiceModal(0)">
-                        <div class="sc-corner">01</div>
-                        <div class="sc-icon-ring">
-                            <i class="fa fa-mobile-screen"></i>
-                        </div>
-                        <h4>تطبيقات الموبايل</h4>
-                        <p>
-                            تطوير تطبيقات احترافية لـ Android و iOS باستخدام Flutter وأحدث
-            التقنيات.
-                        </p>
-                        <span class="sc-read-more">
-                            عرض المزيد
-                            <i class="fa fa-arrow-left">
-                            </i
-          >
-                        </span>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- يتم تحميلها من data/services.json عبر JS -->
+                    <div class="services-loader" id="servicesLoader">
+                        <div class="spinner-border text-purple" role="status"></div>
                     </div>
-                    <div class="service-cell" onclick="openServiceModal(1)">
-                        <div class="sc-corner">02</div>
-                        <div class="sc-icon-ring">
-                            <i class="fa fa-globe"></i>
+                </div>
+            </div>
+        </section>
+        <!-- ===== ENGAGE / AVAILABILITY ===== -->
+        <section class="engage-section" id="engage">
+            <div class="container">
+                <div class="engage-panel">
+                    <div class="engage-content">
+                        <div class="engage-availability">
+                            <span class="engage-dot"></span>
+                            متاحون الآن لاستقبال مشاريع جديدة
                         </div>
-                        <h4>تطبيقات الويب</h4>
-                        <p>
-                            تطوير مواقع ومنصات ويب متكاملة وقابلة للتوسع بكفاءة وجودة عالية.
+                        <h2 class="engage-headline">
+                            جاهزون لبناء
+                            <span>برنامجك القادم</span>
+                        </h2>
+                        <p class="engage-text">
+                            من الفكرة الأولى وحتى الإطلاق والتشغيل، فريق Dev Core يتولّى تحليل مشروعك
+                            وتصميمه وبرمجته وتسليمه بمعايير جودة واضحة. نعمل على عدد محدود من المشاريع
+                            في الوقت نفسه لنضمن تركيزاً كاملاً على مشروعك.
                         </p>
-                        <span class="sc-read-more">
-                            عرض المزيد
-                            <i class="fa fa-arrow-left">
-                            </i
-          >
-                        </span>
-                    </div>
-                    <div class="service-cell" onclick="openServiceModal(2)">
-                        <div class="sc-corner">03</div>
-                        <div class="sc-icon-ring">
-                            <i class="fa fa-pen-nib"></i>
+                        <div class="engage-actions">
+                            <a href="#contact" class="btn-primary-gold">
+                                ابدأ مشروعك الآن
+                                <i class="fa fa-arrow-left ms-2"></i>
+                            </a>
+                            <a href="#contact" class="engage-btn-outline">احجز مكالمة تعارف</a>
                         </div>
-                        <h4>Graphic Design</h4>
-                        <p>
-                            تصميم هوية بصرية احترافية وتصاميم إبداعية تعكس علامتك التجارية بأفضل
-            صورة.
-                        </p>
-                        <span class="sc-read-more">
-                            عرض المزيد
-                            <i class="fa fa-arrow-left">
-                            </i
-          >
-                        </span>
+                        <ul class="engage-meta">
+                            <li><i class="fa fa-bolt"></i> رد خلال 24 ساعة</li>
+                            <li><i class="fa fa-file-signature"></i> عقد ومراحل واضحة</li>
+                            <li><i class="fa fa-life-ring"></i> دعم بعد التسليم</li>
+                        </ul>
                     </div>
-                    <!-- Row 2: Social | Featured white (center) | CTA dark -->
-                    <div class="service-cell" onclick="openServiceModal(3)">
-                        <div class="sc-corner">04</div>
-                        <div class="sc-icon-ring">
-                            <i class="fa fa-share-nodes"></i>
+                    <div class="engage-build">
+                        <span class="engage-build-label">ماذا نبني؟</span>
+                        <div class="engage-tags">
+                            <span>تطبيقات ويب متكاملة</span>
+                            <span>تطبيقات موبايل</span>
+                            <span>أنظمة SaaS</span>
+                            <span>لوحات تحكم وإدارة</span>
+                            <span>متاجر إلكترونية</span>
+                            <span>تكاملات وواجهات API</span>
+                            <span>أتمتة العمليات</span>
+                            <span>منصات مخصصة</span>
                         </div>
-                        <h4>Social Media Design</h4>
-                        <p>تصميم محتوى سوشيال ميديا جذاب يزيد من تفاعلك وحضورك الرقمي.</p>
-                        <span class="sc-read-more">
-                            عرض المزيد
-                            <i class="fa fa-arrow-left">
-                            </i
-          >
-                        </span>
-                    </div>
-                    <div class="service-cell" onclick="openServiceModal(4)">
-                        <div class="sc-corner">05</div>
-                        <div class="sc-icon-ring">
-                            <i class="fa fa-headset"></i>
-                        </div>
-                        <h4>استشارة تقنية</h4>
-                        <p>
-                            نساعدك في اختيار الحلول التكنولوجية المناسبة لمشروعك وتحقيق أهدافك
-            الرقمية.
-                        </p>
-                        <span class="sc-read-more">
-                            عرض المزيد
-                            <i class="fa fa-arrow-left">
-                            </i
-          >
-                        </span>
-                    </div>
-                    <div class="service-cell" onclick="openServiceModal(5)">
-                        <div class="sc-corner">06</div>
-                        <div class="sc-icon-ring">
-                            <i class="fa fa-bullhorn"></i>
-                        </div>
-                        <h4>التسويق الرقمي</h4>
-                        <p>
-                            استراتيجيات تسويقية فعّالة لزيادة ظهورك الرقمي وتحقيق نمو حقيقي
-            لعملك.
-                        </p>
-                        <span class="sc-read-more">
-                            عرض المزيد
-                            <i class="fa fa-arrow-left">
-                            </i
-          >
-                        </span>
                     </div>
                 </div>
             </div>

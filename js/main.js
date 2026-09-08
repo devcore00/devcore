@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initFloatingNavbar();
   initThemeToggle();
   initHeroTypewriter();
+  loadServices();
   loadProducts();
   loadProjects();
 });
@@ -160,8 +161,17 @@ function initFloatingNavbar() {
    ACTIVE NAV LINK ON SCROLL
 ============================================= */
 function initNavActiveLink() {
-  const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+  // Only track sections that actually have a nav link pointing to them,
+  // so sections like #engage don't clear the active state as you scroll past.
+  const linkedIds = Array.prototype.map.call(navLinks, function (link) {
+    return (link.getAttribute('href') || '').replace('#', '');
+  });
+  const sections = Array.prototype.filter.call(
+    document.querySelectorAll('section[id]'),
+    function (section) { return linkedIds.indexOf(section.getAttribute('id')) !== -1; }
+  );
 
   // While a nav click is smooth-scrolling, don't let the scroll handler
   // fight the clicked link for the "active" state.
@@ -422,47 +432,64 @@ function openProjectModal(index) {
 
 
 /* =============================================
+   SERVICES - Load from JSON
+============================================= */
+let servicesData = [];
+
+function loadServices() {
+  var grid = document.getElementById('servicesGrid');
+  if (!grid) return;
+
+  fetch('data/services.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('فشل تحميل الخدمات');
+      return res.json();
+    })
+    .then(function (data) {
+      servicesData = data.services || [];
+      renderServices(servicesData);
+    })
+    .catch(function (err) {
+      console.error(err);
+      grid.innerHTML =
+        '<div class="no-projects"><i class="fa fa-folder-open"></i>' +
+        '<p>تعذّر تحميل الخدمات، يرجى المحاولة لاحقًا.</p></div>';
+    });
+}
+
+function renderServices(services) {
+  var grid = document.getElementById('servicesGrid');
+  if (!grid) return;
+
+  grid.innerHTML = services.map(function (svc, index) {
+    var num = ('0' + (index + 1)).slice(-2);
+    return (
+      '<div class="service-cell" role="button" tabindex="0">' +
+        '<div class="sc-corner">' + num + '</div>' +
+        '<div class="sc-icon-ring"><i class="' + svc.icon + '"></i></div>' +
+        '<h4>' + svc.title + '</h4>' +
+        '<p>' + (svc.short || svc.desc) + '</p>' +
+        '<span class="sc-read-more">عرض المزيد <i class="fa fa-arrow-left"></i></span>' +
+      '</div>'
+    );
+  }).join('');
+
+  Array.prototype.forEach.call(grid.children, function (cell, index) {
+    cell.addEventListener('click', function () {
+      openServiceModal(index);
+    });
+    cell.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openServiceModal(index);
+      }
+    });
+  });
+}
+
+/* =============================================
    SERVICE MODAL
 ============================================= */
-const servicesData = [
-  {
-    icon: 'fa fa-mobile-screen',
-    title: 'تطبيقات الموبايل',
-    desc: 'نطور تطبيقات موبايل احترافية تعمل على نظامي Android وiOS باستخدام Flutter وأحدث التقنيات. نحرص على أن يكون كل تطبيق سريعاً وسهل الاستخدام وذا تصميم احترافي يعكس هوية علامتك التجارية ويوفر تجربة مستخدم استثنائية.',
-    goals: ['Flutter & Dart', 'تصميم UI/UX متميز', 'Android & iOS بتطبيق واحد', 'أداء عالي وسرعة استجابة', 'تكامل مع APIs والخدمات الخارجية', 'نشر على Google Play & App Store']
-  },
-  {
-    icon: 'fa fa-globe',
-    title: 'تطبيقات الويب',
-    desc: 'نبني مواقع ومنصات ويب متكاملة قابلة للتوسع وذات أداء عالٍ باستخدام أحدث تقنيات التطوير. من التصميم إلى التنفيذ، نحرص على تقديم تجربة رقمية استثنائية لمستخدميك وتحقيق أهدافك التجارية.',
-    goals: ['Laravel & PHP', 'HTML5, CSS3, JavaScript', 'لوحة تحكم متكاملة', 'Responsive Design', 'تحسين محركات البحث (SEO)', 'تطوير تجارة إلكترونية']
-  },
-  {
-    icon: 'fa fa-pen-nib',
-    title: 'Graphic Design',
-    desc: 'نصمم هوية بصرية احترافية وتصاميم إبداعية تعكس علامتك التجارية وتجعلها لا تُنسى. من الشعار إلى المطبوعات، كل تصميم يُعبّر عن جوهر مشروعك ويترك انطباعاً دائماً.',
-    goals: ['تصميم شعارات احترافية', 'هوية بصرية متكاملة', 'مطبوعات ودعاية وإعلان', 'تصاميم بروشورات وكتالوجات', 'تصميم واجهات المستخدم UI', 'تصاميم إبداعية مخصصة']
-  },
-  {
-    icon: 'fa fa-share-nodes',
-    title: 'Social Media Design',
-    desc: 'نصمم محتوى سوشيال ميديا جذاباً ومؤثراً يزيد من تفاعلك وحضورك الرقمي على جميع منصات التواصل الاجتماعي. تصاميم تتحدث عن علامتك التجارية بصوت بصري قوي ومتناسق.',
-    goals: ['بوستات وستوريز احترافية', 'تصاميم موشن جرافيك', 'كفرات وبروفايل للصفحات', 'تصاميم إعلانات مدفوعة', 'محتوى بصري متناسق', 'خطة محتوى شهرية']
-  },
-  {
-    icon: 'fa fa-headset',
-    title: 'استشارة تقنية',
-    desc: 'نقدم استشارات تقنية متخصصة لمساعدتك في اختيار الحلول التكنولوجية المناسبة لمشروعك، وتحقيق أهدافك الرقمية بكفاءة وفاعلية من خلال خبرائنا المتخصصين.',
-    goals: ['تحليل متطلبات المشروع', 'اختيار التقنيات المناسبة', 'وضع خارطة طريق واضحة', 'تقييم التكاليف والجدول الزمني', 'استشارة أولى مجانية', 'متابعة ما بعد التنفيذ']
-  },
-  {
-    icon: 'fa fa-bullhorn',
-    title: 'التسويق الرقمي',
-    desc: 'نضع لك استراتيجيات تسويقية رقمية فعّالة تزيد من ظهورك الإلكتروني وتستهدف جمهورك المثالي لتحقيق نمو حقيقي وملموس لعملك ومبيعاتك.',
-    goals: ['استراتيجية تسويق متكاملة', 'إدارة إعلانات Google & Meta', 'تحسين محركات البحث SEO', 'تحليل البيانات والتقارير', 'إدارة منصات التواصل الاجتماعي', 'تسويق بالمحتوى']
-  }
-];
-
 function openServiceModal(index) {
   var svc = servicesData[index];
   if (!svc) return;
@@ -530,7 +557,6 @@ function renderProducts(products) {
             '<h3 class="pcf-name">' + p.nameAr + ' <span>' + p.nameEn + '</span></h3>' +
             '<p class="pcf-tagline">' + p.tagline + '</p>' +
             '<p class="pcf-desc">' + p.desc + '</p>' +
-            '<div class="pcf-features">' + featuresHtml + '</div>' +
             '<div class="pcf-actions">' +
               '<a href="#contact" class="btn-primary-gold">اطلب عرضاً تجريبياً<i class="fa fa-arrow-left ms-2"></i></a>' +
               '<a href="#contact" class="pcf-btn-ghost">تواصل معنا</a>' +
