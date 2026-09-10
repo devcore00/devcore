@@ -1,101 +1,99 @@
-{
-  "projects": [
-    {
-      "id": 1,
-      "title": "تطبيق متجر إلكتروني",
-      "category": "mobile",
-      "description": "تطبيق موبايل متكامل لمتجر إلكتروني يدعم Android وiOS مع نظام دفع إلكتروني وتتبع الطلبات.",
-      "images": [
-        "public/default_image.png",
-        "public/mobile/default_image.png"
-      ],
-      "tags": [
-        "Flutter",
-        "Dart",
-        "Firebase",
-        "UI/UX"
-      ],
-      "link": ""
-    },
-    {
-      "id": 2,
-      "title": "تطبيق حجز مواعيد",
-      "category": "mobile",
-      "description": "تطبيق احترافي لحجز المواعيد مع نظام إشعارات وإدارة متكاملة للعملاء.",
-      "images": [
-        "public/default_image.png",
-        "public/default_image.png"
-      ],
-      "tags": [
-        "Flutter",
-        "Laravel API",
-        "Notifications"
-      ],
-      "link": ""
-    },
-    {
-      "id": 3,
-      "title": "منصة تعليمية",
-      "category": "web",
-      "description": "منصة ويب تعليمية متكاملة تتيح إنشاء الكورسات وإدارة الطلاب ومتابعة التقدم.",
-      "images": [
-        "public/default_image.png",
-        "public/default_image.png"
-      ],
-      "tags": [
-        "Laravel",
-        "MySQL",
-        "Bootstrap",
-        "JavaScript"
-      ],
-      "link": ""
-    },
-    {
-      "id": 5,
-      "title": "هوية بصرية - مطعم",
-      "category": "graphic",
-      "description": "تصميم هوية بصرية متكاملة لمطعم تشمل الشعار والألوان وجميع المطبوعات.",
-      "images": [
-        "public/default_image.png"
-      ],
-      "tags": [
-        "Logo Design",
-        "Brand Identity",
-        "Print"
-      ],
-      "link": ""
-    },
-    {
-      "id": 6,
-      "title": "شعار وهوية - شركة تقنية",
-      "category": "graphic",
-      "description": "تصميم شعار عصري وهوية بصرية احترافية لشركة تقنية ناشئة.",
-      "images": [
-        "public/default_image.png",
-        "public/default_image.png"
-      ],
-      "tags": [
-        "Logo",
-        "Branding",
-        "Illustrator"
-      ],
-      "link": ""
-    },
-    {
-      "id": 7,
-      "title": "محتوى سوشيال ميديا - عيادة",
-      "category": "social",
-      "description": "تصميم محتوى سوشيال ميديا شهري لعيادة طبية يشمل البوستات والستوريز والإعلانات.",
-      "images": [
-        "public/default_image.png"
-      ],
-      "tags": [
-        "Social Media",
-        "Instagram",
-        "Facebook",
-        "Design"
-      ],
-      "link": ""
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "title": "تطبيق متجر إلكتروني",
+    "category": "mobile",
+    "description": "تطبيق موبايل متكامل لمتجر إلكتروني يدعم Android وiOS مع نظام دفع إلكتروني وتتبع الطلبات.",
+    "images": [
+      "public/default_image.png",
+      "public/mobile/default_image.png"
+    ],
+    "tags": [
+      "Flutter",
+      "Dart",
+      "Firebase",
+      "UI/UX"
+    ],
+    "link": ""
+  },
+  {
+    "id": 2,
+    "title": "تطبيق حجز مواعيد",
+    "category": "mobile",
+    "description": "تطبيق احترافي لحجز المواعيد مع نظام إشعارات وإدارة متكاملة للعملاء.",
+    "images": [
+      "public/default_image.png",
+      "public/default_image.png"
+    ],
+    "tags": [
+      "Flutter",
+      "Laravel API",
+      "Notifications"
+    ],
+    "link": ""
+  },
+  {
+    "id": 3,
+    "title": "منصة تعليمية",
+    "category": "web",
+    "description": "منصة ويب تعليمية متكاملة تتيح إنشاء الكورسات وإدارة الطلاب ومتابعة التقدم.",
+    "images": [
+      "public/default_image.png",
+      "public/default_image.png"
+    ],
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "link": ""
+  },
+  {
+    "id": 5,
+    "title": "هوية بصرية - مطعم",
+    "category": "graphic",
+    "description": "تصميم هوية بصرية متكاملة لمطعم تشمل الشعار والألوان وجميع المطبوعات.",
+    "images": [
+      "public/default_image.png"
+    ],
+    "tags": [
+      "Logo Design",
+      "Brand Identity",
+      "Print"
+    ],
+    "link": ""
+  },
+  {
+    "id": 6,
+    "title": "شعار وهوية - شركة تقنية",
+    "category": "graphic",
+    "description": "تصميم شعار عصري وهوية بصرية احترافية لشركة تقنية ناشئة.",
+    "images": [
+      "public/default_image.png",
+      "public/default_image.png"
+    ],
+    "tags": [
+      "Logo",
+      "Branding",
+      "Illustrator"
+    ],
+    "link": ""
+  },
+  {
+    "id": 7,
+    "title": "محتوى سوشيال ميديا - عيادة",
+    "category": "social",
+    "description": "تصميم محتوى سوشيال ميديا شهري لعيادة طبية يشمل البوستات والستوريز والإعلانات.",
+    "images": [
+      "public/default_image.png"
+    ],
+    "tags": [
+      "Social Media",
+      "Instagram",
+      "Facebook",
+      "Design"
+    ],
+    "link": ""
+  }
+]

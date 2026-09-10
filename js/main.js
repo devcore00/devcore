@@ -21,106 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
   initSmoothScroll();
   initFloatingNavbar();
   initThemeToggle();
-  initHeroTypewriter();
   loadServices();
   loadProducts();
   loadProjects();
 });
-
-/* =============================================
-   HERO TITLE + DESCRIPTION TYPEWRITER
-============================================= */
-function typeElement(el, speed, callback) {
-  var originalNodes = Array.prototype.slice.call(el.childNodes);
-
-  // Normalize whitespace so source-file indentation isn't typed out literally
-  originalNodes.forEach(function (node, i) {
-    if (node.nodeType !== Node.TEXT_NODE) return;
-    var normalized = node.textContent.replace(/\s+/g, ' ');
-    if (i === 0) normalized = normalized.replace(/^\s+/, '');
-    if (i === originalNodes.length - 1) normalized = normalized.replace(/\s+$/, '');
-    node.textContent = normalized;
-  });
-
-  el.textContent = '';
-  el.style.opacity = '1';
-
-  var nodeIndex = 0;
-  var charIndex = 0;
-  var currentTarget = el;
-
-  function typeNext() {
-    if (nodeIndex >= originalNodes.length) {
-      if (callback) callback();
-      return;
-    }
-
-    var node = originalNodes[nodeIndex];
-
-    if (node.nodeType === Node.TEXT_NODE) {
-      var text = node.textContent;
-      if (text.length === 0) {
-        nodeIndex++;
-        setTimeout(typeNext, 0);
-        return;
-      }
-      if (charIndex < text.length) {
-        currentTarget.appendChild(document.createTextNode(text.charAt(charIndex)));
-        charIndex++;
-        setTimeout(typeNext, speed);
-      } else {
-        nodeIndex++;
-        charIndex = 0;
-        currentTarget = el;
-        setTimeout(typeNext, speed);
-      }
-      return;
-    }
-
-    if (node.nodeType === Node.ELEMENT_NODE) {
-      if (node.tagName === 'BR') {
-        el.appendChild(document.createElement('br'));
-        nodeIndex++;
-        setTimeout(typeNext, speed);
-        return;
-      }
-
-      if (currentTarget === el) {
-        var clone = node.cloneNode(false);
-        el.appendChild(clone);
-        currentTarget = clone;
-      }
-
-      var elText = node.textContent;
-      if (charIndex < elText.length) {
-        currentTarget.appendChild(document.createTextNode(elText.charAt(charIndex)));
-        charIndex++;
-        setTimeout(typeNext, speed);
-      } else {
-        nodeIndex++;
-        charIndex = 0;
-        currentTarget = el;
-        setTimeout(typeNext, speed);
-      }
-    }
-  }
-
-  typeNext();
-}
-
-function initHeroTypewriter() {
-  var titleEl = document.querySelector('.hero-title');
-  var descEl = document.querySelector('.hero-desc');
-  if (!titleEl) return;
-
-  typeElement(titleEl, 55, function () {
-    if (descEl) {
-      setTimeout(function () {
-        typeElement(descEl, 18);
-      }, 200);
-    }
-  });
-}
 
 /* =============================================
    SCROLL TO TOP
@@ -263,7 +167,7 @@ function loadProjects() {
       return res.json();
     })
     .then(function (data) {
-      allProjects = data.projects || [];
+      allProjects = Array.isArray(data) ? data : [];
       renderProjects(allProjects);
       initFilterButtons();
     })
@@ -446,7 +350,7 @@ function loadServices() {
       return res.json();
     })
     .then(function (data) {
-      servicesData = data.services || [];
+      servicesData = Array.isArray(data) ? data : [];
       renderServices(servicesData);
     })
     .catch(function (err) {
@@ -522,7 +426,7 @@ function loadProducts() {
       return res.json();
     })
     .then(function (data) {
-      productsData = data.products || [];
+      productsData = Array.isArray(data) ? data : [];
       renderProducts(productsData);
     })
     .catch(function (err) {
@@ -532,6 +436,13 @@ function loadProducts() {
         grid.innerHTML = '<div class="no-projects"><i class="fa fa-folder-open"></i><p>تعذّر تحميل المنتجات، يرجى المحاولة لاحقًا.</p></div>';
       }
     });
+}
+
+function productIconMarkup(icon, alt) {
+  if (/\.(png|jpe?g|svg|webp|gif)$/i.test(icon)) {
+    return '<img src="' + icon + '" alt="' + (alt || '') + '" class="pcf-icon-img" />';
+  }
+  return '<i class="' + icon + '"></i>';
 }
 
 function renderProducts(products) {
@@ -548,7 +459,7 @@ function renderProducts(products) {
         '<div class="pcf-inner">' +
           '<div class="pcf-content">' +
             '<div class="pcf-top">' +
-              '<div class="pcf-icon-wrap"><i class="' + p.icon + '"></i></div>' +
+              '<div class="pcf-icon-wrap">' + productIconMarkup(p.icon, p.nameAr) + '</div>' +
               '<div class="pcf-badge-wrap">' +
                 '<span class="pcf-badge">' + p.badge + '</span>' +
                 '<span class="pcf-badge pcf-badge-live"><span class="pcf-live-dot"></span>متاح الآن</span>' +
@@ -582,7 +493,10 @@ function openProductModal(index) {
   var prod = productsData[index];
   if (!prod) return;
 
-  document.getElementById('prodIcon').className = prod.icon;
+  var prodIconEl = document.getElementById('prodIcon');
+  var prodIconWrap = prodIconEl.parentNode;
+  prodIconWrap.innerHTML = productIconMarkup(prod.icon, prod.nameAr);
+  prodIconWrap.firstChild.id = 'prodIcon';
   document.getElementById('prodTitle').textContent = prod.nameAr + ' — ' + prod.nameEn;
   document.getElementById('prodTagline').textContent = prod.tagline;
   document.getElementById('prodDesc').textContent = prod.desc;
