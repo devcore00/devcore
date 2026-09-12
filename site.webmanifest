@@ -4,7 +4,7 @@
   "description": "فريق متخصص في تطوير تطبيقات الويب والموبايل، وتصميم الهوية البصرية ومحتوى السوشيال ميديا.",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#0f0324",
+  "background_color": "#ffffff",
   "theme_color": "#4a1585",
   "lang": "ar",
   "dir": "rtl",
