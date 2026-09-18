@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>تفاصيل المنتج | Dev Core</title>
+        <meta name="description" content="تعرف على تفاصيل ومميزات منتجات Dev Core البرمجية.">
+        <script>
+        (function () {
+            var theme = localStorage.getItem('devcore-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+        </script>
+        <link rel="icon" href="public/icon.ico" sizes="any">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/product-details.css">
+    </head>
+    <body class="product-details-page">
+        <nav class="navbar" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="index.html#home">
+                    <img src="public/logo-nav.png" alt="DevCore" class="navbar-logo">
+                </a>
+                <div class="product-nav-actions">
+                    <button
+                        class="theme-toggle"
+                        id="themeToggle"
+                        type="button"
+                        title="تبديل الوضع"
+                        aria-label="تبديل الوضع"
+                    >
+                        <i class="fa fa-moon icon-dark"></i>
+                        <i class="fa fa-sun icon-light"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <main id="productDetailsPage" class="product-details-main">
+            <div class="container py-5 text-center">
+                <div class="spinner-border text-purple" role="status"></div>
+            </div>
+        </main>
+        <footer class="footer details-footer">
+            <div class="container">
+                <div class="footer-inner">
+                    <a href="index.html#home" class="footer-logo-text">
+                        <img src="public/logo-nav-dark.png" alt="DevCore" class="footer-logo-img">
+                    </a>
+                    <p class="footer-text mb-0">
+                        &copy;
+                        <span id="year"></span>
+                        Dev Core. جميع الحقوق محفوظة.
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/product-details.js"></script>
+    </body>
+</html>

@@ -1,0 +1,317 @@
+.product-details-page {
+    background: var(--bg-hero);
+}
+
+.product-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.details-back-link,
+.details-breadcrumb {
+    color: var(--purple);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.details-back-link:hover,
+.details-breadcrumb:hover {
+    color: var(--gold);
+}
+
+.details-back-link i,
+.details-breadcrumb i {
+    margin-left: 6px;
+}
+
+.product-details-main {
+    min-height: calc(100vh - 180px);
+}
+
+.details-hero {
+    padding: 42px 0 68px;
+    background: var(--bg-hero);
+}
+
+.details-breadcrumb {
+    display: inline-block;
+    margin-bottom: 26px;
+}
+
+.details-copy {
+    max-width: 620px;
+}
+
+.details-product-mark {
+    width: 58px;
+    height: 58px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    padding: 4px;
+    vertical-align: middle;
+    background: var(--white);
+    border: 1px solid rgba(74, 21, 133, 0.12);
+    border-radius: 15px;
+    color: var(--gold);
+    font-size: 24px;
+}
+
+.details-product-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 11px;
+}
+
+.details-copy .pcf-badge,
+.details-status {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.details-status {
+    color: #22a05a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.details-status span {
+    width: 8px;
+    height: 8px;
+    margin-left: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+}
+
+.details-copy h1 {
+    margin: 16px 0 10px;
+    color: var(--text);
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.details-copy h1 small {
+    display: block;
+    margin-top: 8px;
+    color: var(--purple);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.details-tagline {
+    color: var(--text);
+    border-right: 3px solid var(--gold);
+    padding-right: 14px;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.details-description {
+    color: var(--gray-600);
+    font-size: 15px;
+    line-height: 2.1;
+    margin: 18px 0 26px;
+}
+
+.details-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.details-whatsapp {
+    color: #159447;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.details-whatsapp i {
+    font-size: 19px;
+    margin-left: 5px;
+}
+
+.details-gallery {
+    background: var(--white);
+    border: 1px solid rgba(74, 21, 133, 0.12);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 18px 50px rgba(74, 21, 133, 0.1);
+}
+
+.details-gallery .carousel-inner {
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--gray-50);
+}
+
+.details-gallery .carousel-item {
+    aspect-ratio: 4 / 3;
+}
+
+.details-gallery .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.details-gallery .carousel-control-prev,
+.details-gallery .carousel-control-next {
+    width: 12%;
+}
+
+.details-gallery .carousel-control-prev-icon,
+.details-gallery .carousel-control-next-icon {
+    background-color: var(--purple);
+    background-size: 55%;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.details-gallery .carousel-indicators {
+    margin-bottom: 12px;
+}
+
+.details-gallery .carousel-indicators button {
+    width: 8px;
+    height: 8px;
+    border: 0;
+    border-radius: 50%;
+}
+
+.details-thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    overflow-x: auto;
+}
+
+.details-thumbnail {
+    width: 68px;
+    height: 52px;
+    padding: 3px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    border: 1px solid rgba(74, 21, 133, 0.14);
+    border-radius: 9px;
+    background: var(--white);
+}
+
+.details-thumbnail.active {
+    border: 2px solid var(--gold);
+}
+
+.details-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.details-features {
+    padding: 68px 0 84px;
+    background: var(--bg-content);
+}
+
+.details-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.details-feature-grid li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 86px;
+    padding: 18px;
+    color: var(--text);
+    font-weight: 700;
+    background: var(--white);
+    border: 1px solid rgba(74, 21, 133, 0.1);
+    border-radius: 12px;
+}
+
+.details-feature-icon {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    color: var(--gold);
+    background: var(--gold-light);
+    border-radius: 10px;
+}
+
+.details-not-found {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.details-not-found i {
+    color: var(--gold);
+    font-size: 52px;
+}
+
+.details-not-found h1 {
+    color: var(--text);
+    margin: 18px 0 8px;
+}
+
+.details-not-found p {
+    color: var(--gray-600);
+    margin-bottom: 24px;
+}
+
+.details-footer {
+    margin-top: 0;
+}
+
+@media (max-width: 767px) {
+    .details-hero {
+        padding: 30px 0 46px;
+    }
+
+    .details-copy h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .details-copy h1 small {
+        margin-top: 5px;
+        font-size: 0.95rem;
+    }
+
+    .details-copy .pcf-badge,
+    .details-status {
+        margin-bottom: 8px;
+    }
+
+    .details-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-back-link {
+        font-size: 0;
+    }
+
+    .details-back-link i {
+        font-size: 17px;
+        margin: 0;
+    }
+}
+
+[data-theme="dark"] .details-gallery,
+[data-theme="dark"] .details-feature-grid li {
+    background: rgba(255, 255, 255, 0.04);
+}

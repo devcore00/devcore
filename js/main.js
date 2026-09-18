@@ -469,13 +469,11 @@ function renderProducts(products) {
             '<p class="pcf-tagline">' + p.tagline + '</p>' +
             '<p class="pcf-desc">' + p.desc + '</p>' +
             '<div class="pcf-actions">' +
-              '<a href="#contact" class="btn-primary-gold">اطلب عرضاً تجريبياً<i class="fa fa-arrow-left ms-2"></i></a>' +
-              '<a href="#contact" class="pcf-btn-ghost">تواصل معنا</a>' +
-              '<button type="button" class="pcf-btn-details" onclick="openProductModal(' + index + ')"><i class="fa fa-circle-info"></i>عرض التفاصيل</button>' +
+              '<a href="product-details.html?id=' + encodeURIComponent(p.id) + '" class="pcf-btn-details"><i class="fa fa-circle-info"></i>عرض تفاصيل المنتج<i class="fa fa-arrow-left pcf-details-arrow"></i></a>' +
             '</div>' +
           '</div>' +
           '<div class="pcf-visual">' +
-            '<img src="' + p.image + '" alt="' + p.imageAlt + '" class="pcf-img-preview" />' +
+              '<img src="' + (p.cover || p.image) + '" alt="' + p.imageAlt + '" class="pcf-img-preview" />' +
             '<div class="pcf-float-card">' +
               '<i class="fa fa-star"></i>' +
               '<div><strong>' + p.floatTitle + '</strong><span>' + p.floatSub + '</span></div>' +

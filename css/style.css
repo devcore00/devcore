@@ -2,6 +2,7 @@
    VARIABLES
 ============================================ */
 :root {
+    --font-ui: 'IBM Plex Sans Arabic', sans-serif;
     --purple: #4a1585;
     --purple-soft: #6b35b8;
     --purple-pale: #f3eeff;
@@ -55,12 +56,60 @@ html {
 }
 
 body {
-    font-family: 'Cairo', sans-serif;
+    font-family: var(--font-ui);
     color: var(--text);
     background: var(--white);
     overflow-x: hidden;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.75;
     padding-top: 81px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    letter-spacing: 0;
+}
+
+p {
+    line-height: 1.85;
+}
+
+.navbar-nav .nav-link {
+    font-size: 15px;
+}
+
+.btn-primary-gold,
+.btn-ghost,
+.btn-nav-cta,
+.pcf-btn-details,
+.pcf-btn-ghost {
+    font-size: 15px;
+}
+
+.hero-desc,
+.about-desc,
+.section-title p,
+.pcf-desc {
+    line-height: 1.9;
+}
+
+.hero-actions,
+.about-actions,
+.pcf-actions {
+    gap: 16px;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+    font-family: var(--font-ui) !important;
 }
 
 img {
@@ -181,6 +230,8 @@ section[id] {
         border-radius: 16px;
         padding: 10px;
         margin-top: 12px;
+        max-height: calc(100vh - 105px);
+        overflow-y: auto;
         box-shadow: 0 16px 40px rgba(74, 21, 133, 0.12);
     }
 
@@ -189,7 +240,7 @@ section[id] {
     }
 
     .navbar-nav .nav-link {
-        padding: 13px 16px !important;
+        padding: 10px 16px !important;
         border-radius: 10px;
     }
 }
@@ -2835,32 +2886,39 @@ section[id] {
 }
 
 .pcf-btn-details {
-    background: transparent;
-    border: none;
+    width: 100%;
+    justify-content: center;
+    background: var(--purple);
+    border: 1px solid var(--purple);
     color: var(--purple);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Cairo', sans-serif;
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    padding: 12px 4px;
+    gap: 9px;
+    padding: 13px 20px;
+    border-radius: var(--radius);
+    color: var(--white);
+    text-decoration: none;
     cursor: pointer;
-    transition: gap 0.2s, color 0.2s;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .pcf-btn-details i {
     font-size: 13px;
-    color: var(--gold);
-    transition: transform 0.2s;
+    color: var(--gold-light);
 }
 
 .pcf-btn-details:hover {
-    gap: 11px;
-    color: var(--purple-soft);
+    background: var(--purple-soft);
+    border-color: var(--purple-soft);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(74, 21, 133, 0.2);
 }
 
-.pcf-btn-details:hover i {
+.pcf-btn-details:hover .pcf-details-arrow {
     transform: translateX(-2px);
 }
 
@@ -4385,6 +4443,7 @@ html[data-theme] .filter-btn {
    MOBILE SLIDERS — Services & Projects (<= 767px)
 ============================================= */
 @media (max-width: 767px) {
+
     /* --- Services slider --- */
     .services-grid {
         display: flex;
@@ -4429,7 +4488,7 @@ html[data-theme] .filter-btn {
         display: none;
     }
 
-    #projectsGrid > .project-item {
+    #projectsGrid>.project-item {
         flex: 0 0 82%;
         max-width: 82%;
         scroll-snap-align: center;
@@ -4441,6 +4500,7 @@ html[data-theme] .filter-btn {
         scroll-behavior: smooth;
     }
 }
+
 /* ============================================
    REDUCED MOTION
    Respect users who ask their OS to minimise animation
