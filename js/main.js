@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
   loadServices();
   loadProducts();
   loadProjects();
+  loadPartners();
 });
 
 /* =============================================
@@ -516,6 +517,48 @@ function openProductModal(index) {
 
   var modal = new bootstrap.Modal(document.getElementById('productDetailsModal'));
   modal.show();
+}
+
+/* =============================================
+   PARTNERS - Load from JSON
+============================================= */
+function loadPartners() {
+  var slider = document.getElementById('partnersSlider');
+  if (!slider) return;
+
+  fetch('data/partners.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('فشل تحميل الشركاء');
+      return res.json();
+    })
+    .then(function (partners) {
+      if (!Array.isArray(partners) || !partners.length) {
+        slider.closest('section').style.display = 'none';
+        return;
+      }
+      function esc(v) {
+        return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+      var items = partners.map(function (p) {
+        var img = '<img src="' + esc(p.logo) + '" alt="' + esc(p.name) + '" loading="lazy" />';
+        return p.link
+          ? '<a class="partner-item" href="' + esc(p.link) + '" target="_blank" rel="noopener" title="' + esc(p.name) + '">' + img + '</a>'
+          : '<div class="partner-item" title="' + esc(p.name) + '">' + img + '</div>';
+      }).join('');
+      var group = '<div class="partners-group">' + items + '</div>';
+      // Repeat enough copies so the track always fills the viewport; the animation moves by one group width.
+      var copies = Math.max(2, Math.ceil(12 / partners.length) + 1);
+      var track = '';
+      for (var i = 0; i < copies; i++) track += group;
+      slider.innerHTML = '<div class="partners-track">' + track + '</div>';
+      slider.style.setProperty('--partners-copies', copies);
+    })
+    .catch(function (err) {
+      console.error(err);
+      slider.closest('section').style.display = 'none';
+    });
 }
 
 var spanYear=document.getElementById("year");
