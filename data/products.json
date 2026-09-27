@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "icon": "public/projects/medical.png",
+    "icon": "public/projects/medical_icon.png",
     "badge": "منتج #01",
     "nameAr": "أساسي ميديكال",
     "nameEn": "Asasy Medical",
@@ -309,7 +309,7 @@
   },
   {
     "id": 2,
-    "icon": "public/projects/Kasher.png",
+    "icon": "public/projects/kasher_icon.png",
     "badge": "منتج #02",
     "nameAr": "أساسي كاشير",
     "nameEn": "Asasy POS",
