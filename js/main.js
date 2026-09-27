@@ -162,6 +162,8 @@ const categoryBadge = {
 let allProjects = [];
 
 function loadProjects() {
+  if (!document.getElementById('projectsGrid')) return;
+
   fetch('data/projects.json')
     .then(function (res) {
       if (!res.ok) throw new Error('فشل تحميل المشاريع');
