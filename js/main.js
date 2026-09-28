@@ -99,9 +99,12 @@ function initNavActiveLink() {
     });
 
     // Near the bottom of the page the last sections can't reach the top,
-    // so force the last section active once we're at the end.
+    // so force the last section active once we're at the end. Only applies
+    // when the page actually scrolls — otherwise this fires at scrollY 0
+    // on short pages / tall viewports and wrongly activates the last link.
+    const canScroll = document.documentElement.scrollHeight > window.innerHeight + 2;
     const scrollBottom = window.scrollY + window.innerHeight;
-    if (scrollBottom >= document.documentElement.scrollHeight - 2 && sections.length) {
+    if (canScroll && scrollBottom >= document.documentElement.scrollHeight - 2 && sections.length) {
       current = sections[sections.length - 1].getAttribute('id');
     }
 
@@ -368,11 +371,9 @@ function renderServices(services) {
   var grid = document.getElementById('servicesGrid');
   if (!grid) return;
 
-  grid.innerHTML = services.map(function (svc, index) {
-    var num = ('0' + (index + 1)).slice(-2);
+  grid.innerHTML = services.map(function (svc) {
     return (
       '<div class="service-cell" role="button" tabindex="0">' +
-        '<div class="sc-corner">' + num + '</div>' +
         '<div class="sc-icon-ring"><i class="' + svc.icon + '"></i></div>' +
         '<h4>' + svc.title + '</h4>' +
         '<p>' + (svc.short || svc.desc) + '</p>' +

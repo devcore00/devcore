@@ -341,7 +341,6 @@ section[id] {
 .hero-center-content .hero-eyebrow,
 .hero-title,
 .hero-desc,
-.hero-social,
 .hero-actions {
     animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -356,10 +355,6 @@ section[id] {
 
 .hero-desc {
     animation-delay: 0.16s;
-}
-
-.hero-social {
-    animation-delay: 0.24s;
 }
 
 .hero-actions {
@@ -449,11 +444,13 @@ section[id] {
 }
 
 /* --- Social Icons --- */
+/* The icons are a fixed overlay anchored under the navbar (see
+   .hero-social-btn below), so this wrapper takes no space in the hero.
+   It must not have a transform/animation, or it becomes the containing
+   block for the fixed icons instead of the viewport. */
 .hero-social {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 32px;
+    height: 0;
+    margin: 0;
 }
 
 .hero-social-btn {
@@ -467,17 +464,65 @@ section[id] {
     color: var(--purple);
     font-size: 16px;
     text-decoration: none;
-    transition: all 0.22s;
+    transition: background 0.22s, color 0.22s, border-color 0.22s, box-shadow 0.22s;
     background: var(--white);
     box-shadow: none;
+    position: fixed;
+    top: 90px;
+    z-index: 5;
+    animation: teardropFall 9s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+/* Like tears falling from the navbar down the page, spread across its
+   width. All four share the exact same keyframes and only differ by
+   delay — so each one rests correctly at its start position (matching
+   the animation's own 0% frame) until its turn, then falls and rises
+   continuously with no jump. Staggering the start times is what makes
+   them cross each other at different heights. */
+.hero-social-btn:nth-child(1) {
+    left: 12%;
+    animation-delay: 0s;
+}
+
+.hero-social-btn:nth-child(2) {
+    left: 38%;
+    animation-delay: 2.25s;
+}
+
+.hero-social-btn:nth-child(3) {
+    left: 62%;
+    animation-delay: 4.5s;
+}
+
+.hero-social-btn:nth-child(4) {
+    left: 86%;
+    animation-delay: 6.75s;
 }
 
 .hero-social-btn:hover {
     background: var(--purple);
     color: var(--white);
     border-color: var(--purple);
-    transform: translateY(-3px);
     box-shadow: none;
+}
+
+/* Falls a long way down the page like a teardrop, then drifts back up
+   (alternate reuses the same easing in reverse, so the rise feels lighter). */
+@keyframes teardropFall {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(80vh);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-social-btn {
+        animation: none;
+    }
 }
 
 /* --- Actions --- */
@@ -1180,7 +1225,7 @@ section[id] {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    gap: 14px;
     background: transparent;
     margin: 24px 0 0;
 }
@@ -1196,7 +1241,7 @@ section[id] {
     background: var(--white);
     border: 1px solid rgba(74, 21, 133, 0.1);
     border-radius: 16px;
-    padding: 24px 22px 20px;
+    padding: 60px 22px 20px;
     position: relative;
     cursor: pointer;
     transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -1222,66 +1267,30 @@ section[id] {
     box-shadow: none;
 }
 
-.sc-corner {
+/* Service icon — sits in the card's top-right corner, where the
+   step number used to be. */
+.sc-icon-ring {
     position: absolute;
     top: 16px;
     right: 16px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(232, 150, 12, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(232, 150, 12, 0.7);
-    font-size: 12px;
-    font-weight: 700;
-    font-family: 'Cairo', sans-serif;
-    letter-spacing: 0.5px;
-    transition: border-color 0.3s, color 0.3s, background 0.3s;
-}
-
-.service-cell:hover .sc-corner {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: rgba(232, 150, 12, 0.08);
-}
-
-.sc-icon-ring {
-    width: 68px;
-    height: 68px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 1.5px solid rgba(74, 21, 133, 0.16);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 18px;
-    transition: border-color 0.35s, transform 0.35s;
-    position: relative;
-}
-
-.sc-icon-ring::before {
-    content: '';
-    position: absolute;
-    inset: 10px;
-    border-radius: 50%;
-    background: rgba(74, 21, 133, 0.04);
-    transition: background 0.35s;
+    transition: border-color 0.3s, background 0.3s;
 }
 
 .service-cell:hover .sc-icon-ring {
-    border-color: rgba(232, 150, 12, 0.5);
-}
-
-.service-cell:hover .sc-icon-ring::before {
-    background: rgba(232, 150, 12, 0.09);
+    border-color: var(--gold);
+    background: rgba(232, 150, 12, 0.08);
 }
 
 .sc-icon-ring i {
-    font-size: 26px;
+    font-size: 16px;
     color: var(--gold);
-    position: relative;
-    z-index: 1;
 }
 
 .service-cell h4 {
@@ -3458,9 +3467,12 @@ section[id] {
     text-decoration: none;
     box-shadow: none;
     transition: transform 0.22s, box-shadow 0.22s;
+    animation: floatBall 3.2s ease-in-out infinite;
+    will-change: transform;
 }
 
 .float-btn:hover {
+    animation-play-state: paused;
     transform: scale(1.12) translateY(-2px);
     box-shadow: none;
     color: var(--white);
@@ -3468,10 +3480,51 @@ section[id] {
 
 .float-whatsapp {
     background: #25D366;
+    animation-delay: 0s;
 }
 
 .float-phone {
     background: #0084ff;
+    animation-delay: 0.65s;
+    animation-duration: 3.6s;
+}
+
+/* Floating "ball" bounce — up and down with a little squash/stretch,
+   like a ball hovering off the ground rather than a linear drift. */
+@keyframes floatBall {
+    0% {
+        transform: translateY(0) scaleX(1) scaleY(1);
+    }
+
+    10% {
+        transform: translateY(-3px) scaleX(0.97) scaleY(1.05);
+    }
+
+    30% {
+        transform: translateY(-20px) scaleX(1.05) scaleY(0.95);
+    }
+
+    50% {
+        transform: translateY(-25px) scaleX(1) scaleY(1);
+    }
+
+    70% {
+        transform: translateY(-20px) scaleX(1.05) scaleY(0.95);
+    }
+
+    90% {
+        transform: translateY(-3px) scaleX(0.97) scaleY(1.05);
+    }
+
+    100% {
+        transform: translateY(0) scaleX(1) scaleY(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .float-btn {
+        animation: none;
+    }
 }
 
 /* ============================================
@@ -3548,11 +3601,11 @@ section[id] {
 
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 14px;
     }
 
     .service-cell {
-        padding: 30px 22px 28px;
+        padding: 60px 22px 28px;
     }
 }
 
@@ -3648,7 +3701,7 @@ section[id] {
 
 
     .service-cell {
-        padding: 28px 18px 26px;
+        padding: 58px 18px 26px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -3663,16 +3716,6 @@ section[id] {
 
     .sc-read-more {
         justify-content: center;
-    }
-
-    .sc-icon-ring {
-        width: 76px;
-        height: 76px;
-        margin: 0 auto 20px;
-    }
-
-    .sc-icon-ring i {
-        font-size: 28px;
     }
 
     .service-cell h4 {
@@ -3769,7 +3812,7 @@ section[id] {
     }
 
     .service-cell {
-        padding: 26px 16px 24px;
+        padding: 58px 16px 24px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -4232,16 +4275,9 @@ html[data-theme] .filter-btn {
     border-color: rgba(255, 255, 255, 0.18);
 }
 
-[data-theme="dark"] .sc-icon-ring::before {
-    background: rgba(255, 255, 255, 0.04);
-}
-
 [data-theme="dark"] .service-cell:hover .sc-icon-ring {
-    border-color: rgba(232, 150, 12, 0.5);
-}
-
-[data-theme="dark"] .service-cell:hover .sc-icon-ring::before {
-    background: rgba(232, 150, 12, 0.09);
+    border-color: var(--gold);
+    background: rgba(232, 150, 12, 0.12);
 }
 
 /* ---- Products section dark overrides ---- */
@@ -4556,21 +4592,17 @@ html[data-theme] .filter-btn {
 }
 
 .partner-item {
-    width: 170px;
-    height: 100px;
+    width: 190px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 18px 22px;
-    background: var(--white);
-    border: 1px solid rgba(74, 21, 133, 0.1);
-    border-radius: var(--radius);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    padding: 8px 10px;
+    transition: transform 0.25s ease;
 }
 
 .partner-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(74, 21, 133, 0.14);
 }
 
 .partner-item img {
@@ -4586,7 +4618,7 @@ html[data-theme] .filter-btn {
 
 @media (max-width: 767px) {
     .partners-section { padding: 52px 0; }
-    .partner-item { width: 130px; height: 80px; padding: 14px 16px; }
+    .partner-item { width: 150px; height: 95px; padding: 6px 10px; }
     .partners-group { gap: 18px; padding-right: 18px; }
 }
 
@@ -4595,7 +4627,3 @@ html[data-theme] .filter-btn {
     .partners-slider { overflow-x: auto; }
 }
 
-[data-theme="dark"] .partner-item {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.1);
-}

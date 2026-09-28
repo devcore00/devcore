@@ -216,7 +216,7 @@
 
 .details-features {
     padding: 68px 0 84px;
-    background: var(--bg-content);
+    background: var(--bg-hero);
 }
 
 .details-feature-grid {
@@ -316,13 +316,13 @@
     background: rgba(255, 255, 255, 0.04);
 }
 /* ===== Platforms / Modules / Editions / Comparison ===== */
-.details-platforms,
 .details-editions {
     padding: 68px 0;
     background: var(--bg-hero);
 }
 
 .details-modules,
+.details-platforms,
 .details-comparison {
     padding: 68px 0;
     background: var(--bg-content);
@@ -588,5 +588,5 @@
 }
 
 .details-edition-grid {
-    align-items: start;
+    align-items: stretch;
 }

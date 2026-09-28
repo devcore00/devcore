@@ -1,8 +1,32 @@
 [
-  { "name": "شريك 1", "logo": "public/logo.png", "link": "" },
-  { "name": "شريك 2", "logo": "public/logo.png", "link": "" },
-  { "name": "شريك 3", "logo": "public/logo.png", "link": "" },
-  { "name": "شريك 4", "logo": "public/logo.png", "link": "" },
-  { "name": "شريك 5", "logo": "public/logo.png", "link": "" },
-  { "name": "شريك 6", "logo": "public/logo.png", "link": "" }
+  {
+    "name": "Nadi Community",
+    "logo": "public/partners/nadi_community.png",
+    "link": "https://nadi-community.com"
+  },
+  {
+    "name": "Dental Clinc Top32",
+    "logo": "public/partners/top32.png",
+    "link": "https://top32bykhaledalian.com/"
+  },
+  {
+    "name": "Stark Brokers",
+    "logo": "public/partners/stark_brokers.png",
+    "link": ""
+  },
+  {
+    "name": "Schoolink",
+    "logo": "public/partners/schoolink.png",
+    "link": ""
+  },
+  {
+    "name": "Asasy Kasher",
+    "logo": "public/partners/kasher_icon.png",
+    "link": ""
+  },
+  {
+    "name": "Asasy Medical",
+    "logo": "public/partners/medical_icon.png",
+    "link": ""
+  }
 ]
