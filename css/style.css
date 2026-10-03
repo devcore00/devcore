@@ -444,13 +444,11 @@ section[id] {
 }
 
 /* --- Social Icons --- */
-/* The icons are a fixed overlay anchored under the navbar (see
-   .hero-social-btn below), so this wrapper takes no space in the hero.
-   It must not have a transform/animation, or it becomes the containing
-   block for the fixed icons instead of the viewport. */
 .hero-social {
-    height: 0;
-    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
 }
 
 .hero-social-btn {
@@ -467,37 +465,6 @@ section[id] {
     transition: background 0.22s, color 0.22s, border-color 0.22s, box-shadow 0.22s;
     background: var(--white);
     box-shadow: none;
-    position: fixed;
-    top: 90px;
-    z-index: 5;
-    animation: teardropFall 9s ease-in-out infinite alternate;
-    will-change: transform;
-}
-
-/* Like tears falling from the navbar down the page, spread across its
-   width. All four share the exact same keyframes and only differ by
-   delay — so each one rests correctly at its start position (matching
-   the animation's own 0% frame) until its turn, then falls and rises
-   continuously with no jump. Staggering the start times is what makes
-   them cross each other at different heights. */
-.hero-social-btn:nth-child(1) {
-    left: 12%;
-    animation-delay: 0s;
-}
-
-.hero-social-btn:nth-child(2) {
-    left: 38%;
-    animation-delay: 2.25s;
-}
-
-.hero-social-btn:nth-child(3) {
-    left: 62%;
-    animation-delay: 4.5s;
-}
-
-.hero-social-btn:nth-child(4) {
-    left: 86%;
-    animation-delay: 6.75s;
 }
 
 .hero-social-btn:hover {
@@ -505,24 +472,6 @@ section[id] {
     color: var(--white);
     border-color: var(--purple);
     box-shadow: none;
-}
-
-/* Falls a long way down the page like a teardrop, then drifts back up
-   (alternate reuses the same easing in reverse, so the rise feels lighter). */
-@keyframes teardropFall {
-    0% {
-        transform: translateY(0);
-    }
-
-    100% {
-        transform: translateY(80vh);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .hero-social-btn {
-        animation: none;
-    }
 }
 
 /* --- Actions --- */
