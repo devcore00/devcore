@@ -315,9 +315,15 @@
     "nameEn": "Asasy POS",
     "tagline": "نظام نقطة بيع ومخزون متكامل للمحلات والسوبر ماركت — من الكاشير للتقارير",
     "desc": "أساسي كاشير نظام متكامل لإدارة المحلات التجارية ونقاط البيع، يغطي دورة العمل كاملة: من البيع السريع بالباركود على شاشة الكاشير، مروراً بالمخزون والمشتريات من الموردين وحسابات العملاء الآجلة، وصولاً إلى ورديات الكاشير وتسوية الدرج النقدي والتقارير المالية وتحليل الأرباح. يدعم وحدات بيع متعددة (قطعة ← علبة ← كرتونة)، وعروض وخصومات وضرائب لكل صنف، وتنبيهات النواقص وقرب انتهاء الصلاحية. يعمل على الويب، ومتاح أيضاً كنسخة ديسكتوب تعمل مباشرة على جهاز الكمبيوتر داخل المحل.",
-    "cover": "public/default_image.png",
+    "cover": "public/projects/casher/cover.png",
     "images": [
-      "public/default_image.png"
+      "public/projects/casher/1.png",
+      "public/projects/casher/2.png",
+      "public/projects/casher/3.png",
+      "public/projects/casher/4.png",
+      "public/projects/casher/5.png",
+      "public/projects/casher/6.png",
+      "public/projects/casher/7.png"
     ],
     "image": "public/default_image.png",
     "imageAlt": "أساسي كاشير - شاشة نقطة البيع",
